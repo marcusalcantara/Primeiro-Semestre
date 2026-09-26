@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<body>
+    <span>Tamanho da tela do celular</span>
+    <input type="text" id="ipt_tela">
+
+    <span>Cor do celular</span>
+    <select id="select_cor">
+    <option>Preto</option>
+    <option>Prata</option>
+    <option>Azul</option>
+    <option>Vermelho</option>
+    </select>
+
+
+    <div id="div_exibir"></div>
+
+    <button onclick="cor()">Sera que ele gosta ?</button>
+</body>
+</html>
+
+<script> 
+    function cor(){
+        let tela = Number (ipt_tela.value)
+        let cor = (select_cor.value)
+
+        if(tela >= 6.5 && (cor == 'Preto' || cor == 'Prata')){
+            div_exibir.innerHTML = `<img src="https://img.magnific.com/fotos-gratis/homem-barbudo-adulto-empolgado-empurra-se-aumenta-a-confianca_176420-18656.jpg?semt=ais_hybrid&w=740&q=80" alt="">`
+        } else {
+            div_exibir.innerHTML = `<img src="https://thumbs.dreamstime.com/b/homem-triste-reclamando-sozinho-em-um-parque-retrato-lateral-de-adulto-num-160673322.jpg" alt="">`
+        }
+    }
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <span>Informe o valor da pizza</span>
+    <input type="text" id="ipt_valor">
+
+    <span>Informe a quantidade de amigos reunidos</span>
+    <input type="text" id="ipt_amigos">
+
+    <button onclick="pizza()">Rola a pizza ?</button>
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+    function pizza(){
+        let preco = Number (ipt_valor.value)
+        let qtd = Number (ipt_amigos.value) 
+        let valorDiv = preco / qtd
+        
+        div_exibir.innerHTML = `Cada amigo vai pagar R$${valorDiv.toFixed(2)} pela pizza <br>`
+
+        if (valorDiv > 20) {
+            div_exibir.innerHTML += `<b style = "color : red"> <i> Deu ruim! Pizza muito cara!</b> </i>`
+        }
+    }
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <span>Filme que mais gosto:</span>
+    <input type="" id="ipt_filme">
+
+    <button onclick="cadastrar()">Cadastrar filme</button>
+    <button onclick="ver()">Ver favoritos</button>
+    
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+    let lista = []
+    function cadastrar(){
+        let filme = ipt_filme.value
+        lista.push(filme)
+    } 
+
+    function ver(){
+        div_exibir.innerHTML = `${lista} <br> Total: ${lista.length} 
+        <br> O filme que mias gosta é ${lista[0]} <br> O filme que menos gosta é ${lista[lista.length - 1]} `
+    }
+
+</script>

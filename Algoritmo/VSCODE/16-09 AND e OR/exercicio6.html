@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+</head>
+<body>
+    <span>Quantidade de itens comprados</span>
+    <input type="text" id="ipt_itens"><br>
+
+    <span>Valor total da compra</span>
+    <input type="text" id="ipt_valor"><br>
+
+    <span>Programa de fidelidade ?</span>
+    <select id="select_programa">
+        <option >Sim</option>
+        <option >Não</option>
+    </select><br>
+
+    <span>Digite o seu CUPOM:</span>
+    <input type="text" id="ipt_cupom"><br>
+
+    <button onclick="valor()">Aplicar desconto</button>
+
+</body>
+</html>
+
+<script>
+    function valor(){
+        let itens = Number(ipt_itens.value)
+        let total = Number(ipt_valor.value)
+        let programa = select_programa.value
+        let cupom = ipt_cupom.value
+
+        if (itens >= 3 && (programa == 'Sim' || cupom == 'PROMO10') && total >= 50){
+            alert('Desconto aplicado !')
+        } else {
+            alert('Compra não elegível para desconto !')
+        }
+    }
+</script>

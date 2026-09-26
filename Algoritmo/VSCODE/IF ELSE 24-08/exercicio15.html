@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15</title>
+</head>
+<body>
+    <span>Quantidade homem no elevador</span>
+    <input type="text" id="ipt_homem"> <br>
+
+    <span>Quantidade mulher no elevador</span>    
+    <input type="text" id="ipt_mulher"><br>
+
+    <button onclick="ligar()">Ligar elevador</button>
+    <div id="div_exibir"></div>
+    <span style="color: green;"></span>
+</body>
+</html>
+
+<script>
+    function ligar(){
+        let homem = Number (ipt_homem.value)
+        let mulher = Number (ipt_mulher.value)
+        let total = (homem * 90) + (mulher * 70)
+        let perder = total - 500 
+
+        if (total <= 500){
+        div_exibir.innerHTML = `<span style="color: green;"> Elevador vai se mover, pois está com ${total}kg </span>`
+        }
+        else
+        div_exibir.innerHTML = `<span style="color: red;"> Alguém precisa descer. Precisa perder ${perder}kg para mover o elevador</span>`
+
+    }
+</script>

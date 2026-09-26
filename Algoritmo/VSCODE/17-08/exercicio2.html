@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <span>Receba o primeiro número</span>
+    <input type="text" id="input_numero1" value="">
+
+    <span>Receba o segundo número</span>
+    <input type="text" id="input_numero2" value="">
+
+    <button onclick="quociente()">Quociente</button>
+    <button onclick="resto()">Resto</button>
+    <button onclick="completo()">Completo</button>
+
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+    function quociente(){
+    let n1 = Number (input_numero1.value)
+    let n2 = Number (input_numero2.value)
+    resultado = n1/n2 
+    let mensagem = `A divisão de ${n1} e ${n2} é ${resultado} `
+    
+    div_exibir.innerHTML = mensagem
+    }
+
+    function resto() {
+    let n1 = Number (input_numero1.value)
+    let n2 = Number (input_numero2.value) 
+    resultado = n1%n2
+    let mensagem = `O resto de ${n1} e ${n2} é ${resultado} `
+
+    div_exibir.innerHTML = mensagem
+    }
+
+    function completo() {
+    let n1 = Number (input_numero1.value)
+    let n2 = Number (input_numero2.value)
+    resultado = n1/n2
+    resultadoo = n1%n2
+    let mensagem = `A divisão de ${n1} por ${n2} é: ${resultado} e o resto dessa divisão é: ${resultadoo}`
+
+    div_exibir.innerHTML = mensagem
+    }
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <span>Informe o valor da 1 nota</span>
+    <input type="text" id="ipt_nota1" ><br>
+
+    <span>Informe o valor da 2 nota</span>
+    <input type="text" id="ipt_nota2"><br>
+
+    <span>Informe o valor da 3 nota</span>
+    <input type="text" id="ipt_nota3"><br>
+
+    <div id="div_exibir"></div>
+
+    <button onclick="desempenho()">Analisar Desempenho</button>
+</body>
+</html>
+
+<script>
+    function desempenho(){
+        let n1 = Number (ipt_nota1.value)
+        let n2 = Number (ipt_nota2.value)
+        let n3 = Number (ipt_nota3.value)
+        let media = (n1 + n2 + n3) / 3
+        div_exibir.innerHTML = `Sua média foi de ${media} <br> `
+
+        if (media >= 9.4){
+        div_exibir.innerHTML += `Parabéns, você é fora de série!`    
+        }
+    }
+</script>   

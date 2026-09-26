@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <span>Digite uma fruta :</span>
+    <input type="text" id="ipt_digite">
+
+    <button onclick="pesquisar()">Pesquisar</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let fruta = ['Banana', 'Uva', 'Maçã']
+    function pesquisar(){
+        let digite = ipt_digite.value
+
+        if (fruta.includes(digite)){
+            div_exibir.innerHTML = `A fruta ${digite} existe na lista`
+        } else {
+            div_exibir.innerHTML = `A fruta ${digite} não existe na lista`            
+        }
+    }
+</script>

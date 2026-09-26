@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <span>Nome da fruta que chegou na mesa</span>
+    <input type="text" id="ipt_fruta">
+
+    <button onclick="verificar()">Vai comer ?</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verificar(){
+        let fruta = ipt_fruta.value
+        if(fruta == 'abacaxi' || fruta == 'uva'){
+            alert(`Sim, vai comer ${fruta}`)
+        }
+        else {
+            alert(`A fruta ${fruta} ela não comer`)
+        }
+    }
+</script>

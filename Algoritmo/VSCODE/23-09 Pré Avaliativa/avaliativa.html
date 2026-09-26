@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliativa</title>
+</head>
+
+<body>
+    <span>Cobustivel vendido</span>
+    <select id="select_combustivel">
+        <option>Gasolina</option>
+        <option>Etanol</option>
+        <option>Diesel</option>
+    </select>
+
+    <span>Quantidade vendida</span>
+    <input type="text" id="ipt_quantidade"><br>
+
+    <span>Hora da venda (00 a 23 somente hora, sem os minutos)</span>
+    <input type="text" id="ipt_hora"><br>
+
+
+    <button onclick="relatorio()">Relatório de vendas</button>
+    <button onclick="encerrar()">Encerrar o dia</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    let venda
+    let recebimento
+    let desconto
+
+    function relatorio() {
+        let combustivel = select_combustivel.value
+        let qtdVendida = Number(ipt_quantidade, value)
+        let horaVenda = Number(ipt_hora.value)
+        let total = 0
+
+        if (combustivel == `Gasolina`) {
+            div_exibir.innerHTML = `${total * qtdVendida}`
+        } else if (combustivel == 'Etanol') {
+            div_exibir.innerHTML = `${precoEtanol * qtdVendida}`
+        } else if (combustivel == 'Diesel') {
+            div_exibir.innerHTML = `${precoDiesel * qtdVendida}`
+        }
+
+        if (qtdVendida >= 20 && (horaVenda >= 21 && horaVenda <= 6)) {
+            precoGasolina = precoGasolina - (precoGasolina * 0.0505)
+            precoEtanol = precoEtanol - (precoEtanol * 0.048)
+            precoDiesel = precoDiesel - (precoDiesel * 0.0303)
+        }
+    }
+
+</script>

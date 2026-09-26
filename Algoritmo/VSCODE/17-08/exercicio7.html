@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+    <span>Informe o sabor da pizza</span> 
+    <input type="text" name="" id="input_sabor" value=""><br>
+
+    <span>Informe o preço da pizza</span>
+    <input type="text" name="" id="input_preco" value=""><br>
+    
+    <span>Informe a quantidade de amigos que vão comer</span>
+    <input type="text" name="" id="input_qntd" value=""><br>
+
+    <button onclick="valor()">Ver valor por amigo</button>
+
+    <div id="div_exibir"></div>
+    
+</body>
+</html>
+
+<script>
+    function valor(){
+        let qntd = Number (input_qntd.value)
+        let preco = Number (input_preco.value)
+        let garcom = (preco * 0.10)
+        let resultado = (preco + garcom) / qntd
+        
+        let mensagem = `Cada amigo vai colaborar com R$ ${resultado} para a pizza de ${input_sabor.value}`
+        div_exibir.innerHTML = mensagem
+    }
+</script>

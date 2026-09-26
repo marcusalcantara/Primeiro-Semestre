@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 8</title>
+</head>
+<body>
+    <span>Informe o valor da passagem do ônibus</span>
+    <input type="text" id="input_valor" value="">
+    
+    <span>Informe a quantidade de viagens você fez por mês</span>
+    <input type="text" id="input_viagem" value="">
+
+    <span>Informe a distância do trabalho até sua casa (em km)</span>
+    <input type="text" id="input_km" value="">
+
+    <button onclick="calcular()">Calcular VT</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function calcular() {
+        let valor = Number (input_valor.value)
+        let viagem = Number (input_viagem.value)  
+        let km = Number (input_km.value)   
+        let uber = (viagem * 0.1)
+        let qntOnibus = (viagem - uber)
+        let n1 = (qntOnibus * valor)
+        let n2 = (km * 0.75)
+        let qntUber = (uber * n2) 
+        let total = (n1 + n2)
+
+        let mensagem = `Você vai gastar R$${total} por mês com transporte.`;
+
+        div_exibir.innerHTML = mensagem
+
+    }
+</script>
+
+

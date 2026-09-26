@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <span>Nota Vestibular</span>
+    <input type="text" id="ipt_vest">
+
+    <span>Nota Enem</span>
+    <input type="text" id="ipt_enem">
+
+    <span>Nota Redação</span>
+    <input type="text" id="ipt_redacao">
+
+    <button onclick="nota()">Verificar aprovação</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function nota(){
+        let enem = Number(ipt_enem.value)
+        let vest = Number(ipt_vest.value)
+        let rdc = Number(ipt_redacao.value)
+
+        if(rdc > 0 && (vest >= 700 || enem >= 650)){
+            alert('Aprovado !')
+        } else{
+            alert('Não aprovado !')
+        }
+    }
+</script>

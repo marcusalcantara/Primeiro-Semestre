@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <span>Digite sua idade</span>
+    <input type="text" id="ipt_idade" value="">
+
+    <button onclick="festa()">Ir para festa !</button>
+</body>
+</html>
+
+<script>
+    function festa() {
+        let idade = Number (ipt_idade.value)
+        if (idade < 18){
+            alert ( "Pedir permissão pro responsável")
+            alert ("#partiuFestaa")
+        }
+            else alert ("#partiuFestaa")
+    }
+</script>

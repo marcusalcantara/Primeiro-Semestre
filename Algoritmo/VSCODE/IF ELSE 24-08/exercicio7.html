@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+    <span>Valor da renda familiar</span>
+    <input type="text" id="ipt_renda">
+
+    <span>Valor da pestração</span>
+    <input type="text" id="ipt_prestacao">
+
+    <button onclick="financiamento()">Verificar financiamento</button>  
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+    function financiamento(){
+        let renda = Number(ipt_renda.value)
+        let prestacao = Number(ipt_prestacao.value)
+        let porcentagem = (prestacao / renda) * 100
+        
+        if (porcentagem > 30)
+            div_exibir.innerHTML = `<b style = "color: red"> Será necessário complementar a renda familiar </b>`
+        else 
+            div_exibir.innerHTML = `A prestação corresponde a ${porcentagem}% da renda familiar `
+    }
+</script>

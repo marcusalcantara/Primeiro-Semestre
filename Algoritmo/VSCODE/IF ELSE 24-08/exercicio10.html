@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Informe a ultima série assistida</span>
+    <input type="text" id="ipt_nome">
+
+    <span>Informe o total de episodios</span>
+    <input type="text" id="ipt_eps">
+
+    <button onclick="sitcom()">Verificar Nível</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function sitcom(){
+        let nome = (ipt_nome.value)
+            div_exibir.innerHTML = `Vejo que você gosta de série ${nome} <br>`
+        let eps = Number(ipt_eps.value)
+        let minutos = eps * 22
+        let horas = minutos / 60
+        
+        if (horas > 30){
+            div_exibir.innerHTML += `Uau, você realmente gosta dessa série!`
+        }   
+    }
+
+</script>   

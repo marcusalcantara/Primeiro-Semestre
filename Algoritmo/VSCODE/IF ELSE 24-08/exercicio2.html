@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <span>Informe a quantidade de latinhas que toma por dia</span>
+    <input type="text" id="ipt_qtd">
+
+    <button onclick="refri()">Quantos Refris? </button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function refri(){
+        let qtd = Number(ipt_qtd.value)
+        let porAno = qtd * 365;
+        
+        div_exibir.innerHTML = `Quantidade de latinhas consumidas : ${porAno} <br>`;
+
+        if (porAno >=500){
+
+            div_exibir.innerHTML += `Cuidado com a diabetes!`
+        }
+        
+    }
+</script>

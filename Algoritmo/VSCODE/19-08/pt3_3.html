@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT3.3</title>
+</head>
+<body>
+    <span>Informe o valor recebido com venda de peças</span>
+    <input type="text" id="ipt_pecas" value="">
+
+    <span>Informe o valor recebido com venda de serviços</span>
+    <input type="text" id="ipt_servicos" value="">
+
+    <span>Informe o percentual de imposto sobre os valores recebidos</span>
+    <input type="text" id="ipt_impostos" value="">
+
+    <span>Informe o valor dos gastos realizados nesse mês</span>
+    <input type="text" id="ipt_gastos" value="">
+
+    <button onclick="acumular()">Acumular</button>
+
+    <div id=" div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function acumular(){
+        let pecas = Number (ipt_pecas.value)
+        let servicos = Number (ipt_servicos.value)
+        let total = pecas + servicos
+        let impostos = Number (ipt_impostos.value)
+        let gastos = Number (ipt_gastos.value)
+
+    }
+</script>

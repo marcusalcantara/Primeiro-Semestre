@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+<body>
+    <span>Renda do usuário</span>
+    <input type="text" id="ipt_renda"><br>
+
+    <span>Renda total familiar do usuário</span>
+    <input type="text" id="ipt_rendaFamiliar"><br>
+
+    <button onclick="verificar()">Verificar ajuda</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verificar(){
+        let usuario = Number(ipt_renda.value)
+        let familia = Number(ipt_rendaFamiliar.value)
+
+        if (usuario <= 1050 && familia  <= 2100){
+            div_exibir.innerHTML = `Você tem esse direito`
+        } 
+        else {
+            div_exibir.innerHTML = `Você não terá direito`
+        }
+    }
+</script>

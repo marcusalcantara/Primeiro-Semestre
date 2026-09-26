@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+</head>
+<body>
+    
+    <span>Qual desses times você torce ? (São Paulo, Palmeiras, Corinthians, Santos)</span>
+    <input type="text" id="ipt_time">
+
+    <div id="div_exibir"></div>
+
+    <button onclick="time()">Fale sobre o seu time</button>
+</body>
+</html>
+
+<script>
+    function time(){
+        let time = ipt_time.value
+        if (time == 'Corinthians'){
+            div_exibir.innerHTML = `<span style="color: white;"><span style="background-color: black;"> Salve o Corinthians </span></span>`
+        } else if (time == 'Palmeiras'){
+            div_exibir.innerHTML = `<span style="color: white;"><span style="background-color: green;"> Salve o alviverde imponente </span></span>`
+        } else if (time == 'Santos'){
+            div_exibir.innerHTML = `<span style="color: black;"><span style="background-color: white;"> Agora quem dá a bola é o Santos </span></span>`
+        } else if(time == 'São Paulo'){
+            div_exibir.innerHTML = `<span style="color: red;"><span style="background-color: black;"> Salve o Tricolor paulista</span></span>`
+        }
+    }
+</script>

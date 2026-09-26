@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8</title>
+</head>
+<body>
+    <span>Digite letras:</span>
+    <input type="text" id="ipt_letra">
+    
+
+
+    <button onclick="verificar()">Verificar Letras</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let secreta = 'Flamengo'
+    function verificar(){
+        let letra = ipt_letra.value
+        
+        if (secreta.includes(letra)){
+            div_exibir.innerHTML = `A letra ${letra} aparece na palavra secreta!`
+        } else {
+            div_exibir.innerHTML = `A letra ${letra} não aparece na palavra secreta!`
+        }
+    }
+</script>

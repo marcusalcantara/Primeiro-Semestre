@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <span>Idade da pessoa</span>
+    <input id="ipt_idade"></input>
+
+    <span>Tem ingresso vip ?</span>
+    <select id="select_vip">
+        <option >Sim</option>
+        <option >Não</option>
+    </select>
+
+    <span>Tem ingresso especial ?</span>
+    <select id="select_especial">
+        <option >Sim </option>
+        <option >Não</option>
+    </select>
+
+    <button onclick="verificar()">Liberar acesso</button>
+</body>
+</html>
+<script>
+    function verificar(){
+        let idade = Number(ipt_idade.value)
+        let vip = select_vip.value
+        let especial = select_especial.value
+
+        if(idade >= 18 && (vip == 'Sim' || especial == 'Sim')){
+            alert('Acesso liberado a área VIP')
+        } else {
+            alert('Acesso negado')
+        }
+    }
+</script>

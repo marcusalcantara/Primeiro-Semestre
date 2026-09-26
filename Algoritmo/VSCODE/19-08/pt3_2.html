@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT 3</title>
+</head>
+<body>
+    <span>Digite o valor a ser depositado</span>
+    <input type="text" id="ipt_depositar" value="">
+
+    <span>Digite o valor a ser retirado</span>
+    <input type="text" id="ipt_retirar" value="">
+
+
+    <button onclick="depositar()">Depositar</button>
+    <button onclick="retirar()">Retirar</button>
+    <div id="div_contador"></div>
+</body>
+</html>
+
+<script>
+    let contador = 0;
+
+    function depositar(){
+        let deposito = Number (ipt_depositar.value)
+        contador = contador + deposito
+        div_contador.innerHTML = `Depósito de R$${deposito}! <br> Saldo atual: R$ ${contador} `
+
+    }
+
+    function retirar(){
+        let retira = Number (ipt_retirar.value)
+        contador = contador - retira
+        div_contador.innerHTML = `Retirada de R$${retira}! <br> Saldo atual: R$ ${contador} `
+
+    }
+
+</script>

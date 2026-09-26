@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extra</title>
+</head>
+<body>
+    <span>Hora que você costuma acessar a netflix</span>
+    <input type="text" id="ipt_netflix">
+
+    <button onclick="netflix()">Ver recomendação</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function netflix(){
+        let horas = Number (ipt_netflix.value)
+            if(horas >= 19 && horas <= 21){
+                div_exibir.innerHTML = `Não é recomendável que você assista sua série favorita no horário ${horas}!`
+            }
+            else {
+                div_exibir.innerHTML = `O horário ${horas} é adequado para assistir sua série favorita !`
+            }
+    }
+</script>

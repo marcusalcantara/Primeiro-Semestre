@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+<body>
+    <span>Numero maior que zero</span>
+    <input type="text" id="ipt_numero">
+
+    <button onclick="numero()">Multiplo de 5</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function numero(){
+        let n = Number(ipt_numero.value)
+
+            if (n < 0){
+                alert("Digite um número maior que zero")
+            }
+              else if ((n % 5 ) == 0){
+                div_exibir.innerHTML = `Perfeito, esse número é múltiplo de cinco`
+            } else if ((n % 5) == 1){
+                div_exibir.innerHTML = `Vich, sobrou um`
+            } else if ((n % 5) == 2){
+                div_exibir.innerHTML = `Para esse o resto é dois`
+            } else if ((n % 5) == 3){
+                div_exibir.innerHTML = `Com mais dois daria certo`
+            } else if ((n % 5) == 4){
+                div_exibir.innerHTML = `Faltou mais 1 para ser multiplo de 5`
+            }
+    }
+</script>

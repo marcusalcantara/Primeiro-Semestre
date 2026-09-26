@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <span>Sua nota na escola</span><br>
+    <input id = "input_nota" value="XXXX"  type="text">
+    <br>
+    <button onclick="Vó()"> Opinião da Vó</button>
+    <button onclick="Mãe()"> Opinião da Mãe</button>
+</body>
+</html>
+
+<script>
+    function Vó() {
+        alert('Muito bem, que neto inteligente, porque tirou ' + input_nota.value)
+    }
+    
+    function Mãe(){
+        alert('Não fez mais que tua obrigação com essa nota ' + input_nota.value)
+    }
+</script>

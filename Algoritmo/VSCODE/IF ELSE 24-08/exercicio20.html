@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>Frequência do aluno</span>
+    <input type="text" id="ipt_aluno">
+
+    <button onclick="aluno()">Analisar Frequência</button>
+    <div id="div_exibir"></div>
+
+</body>
+
+</html>
+
+<script>
+    function aluno() {
+        let frequencia = Number(ipt_aluno.value)
+        if (frequencia < 50) {
+            div_exibir.innerHTML = `<img src="https://st3.depositphotos.com/12982378/35274/i/450/depositphotos_352740142-stock-photo-shocked-traveler-hat-backpack-holding.jpg" alt="">`
+        }
+        else {
+            div_exibir.innerHTML = ` <img src="https://thumbor.novaescola.org.br/3UvSesYa8yKmpLfnes2KtUAANSc=/assets.novaescola.org.br/XVJVRfPNxAj2b7S7hv72UXceJ9rZafrz8AVT2WGAkcHxbHeYSxTVE7YjqKf5/aprender-a-estudar-1.jpg" alt="">`
+        }
+    }
+</script>

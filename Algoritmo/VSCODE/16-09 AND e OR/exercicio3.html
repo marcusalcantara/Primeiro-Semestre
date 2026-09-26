@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+<body>
+    <span>Renda familiar do aluno</span>
+    <input type="text" id="ipt_renda">
+
+    <span>Media escolar do aluno</span>
+    <input type="text" id="ipt_aluno">
+
+    <span>Aluno federado ?</span>
+    <select id="select_aluno">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="aluno()">Verificar bolsa</button>
+</body>
+</html>
+
+<script>
+    function aluno(){
+        let renda = Number(ipt_renda.value)
+        let media = Number(ipt_aluno.value)
+        let federado = select_aluno.value
+
+        if (renda <= 800 && media >= 8 || federado == 'Sim' && media >= 6){
+            alert('Bolsa integral concedida')
+        } else {
+            alert('Bolsa não concedida')
+        }
+    }
+</script>

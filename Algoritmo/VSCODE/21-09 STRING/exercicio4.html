@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Digite uma palavra :</span>
+    <input type="text" id="ipt_palavra1"><br>
+
+    <span>Digite outra palavra :</span>
+    <input type="text" id="ipt_palavra2"><br>
+
+    <button onclick="verifica()">Analisar palavras</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verifica(){
+        let p1 = ipt_palavra1.value
+        let p2 = ipt_palavra2.value
+
+        if (p1.toUpperCase(p2) == p2.toUpperCase(p1) && p1 === p2){
+            div_exibir.innerHTML = `As palavras ${p1} e ${p2} são exatamente iguais!`
+        } else if(p1.toLowerCase(p2) == p2.toLowerCase(p1)){
+            div_exibir.innerHTML = `As palavras ${p1} e ${p2} possuem o mesmo conteúdo, mas a digitação é diferente (maiúsculas e minúsculas)`
+        } else{
+            div_exibir.innerHTML = `As palavras ${p1} e ${p2} são completamente diferentes!`
+        }
+    }
+</script>

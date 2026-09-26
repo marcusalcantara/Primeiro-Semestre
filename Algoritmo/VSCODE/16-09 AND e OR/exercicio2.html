@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+
+<body>
+    <span>Renda Mensal</span>
+    <input type="text" id="ipt_renda"><br>
+
+    <span>Score de Credito</span>
+    <input type="text" id="ipt_credito"><br>
+
+    <span>Anos de correntista</span>
+    <input type="text" id="ipt_correntista"><br>
+
+    <span>Tem divida</span>
+    <select id="select_divida">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="cliente()">Analisar crédito</button>
+</body>
+</html>
+
+<script>
+    function cliente(){
+        let renda = Number(ipt_renda.value)
+        let cred = Number(ipt_credito.value)
+        let corrente = Number(ipt_correntista.value)
+        let divida = (select_divida.value)
+
+        if (renda >= 3000 && cred >= 600 || corrente > 5 && divida == 'Não'){
+            alert ('Emprestimo aprovado')
+        } else {
+            alert ('Empréstimo reprovado')
+        }
+    }
+</script>

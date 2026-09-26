@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <span>Digite uma frase:</span>
+    <input type="text" id="ipt_frase" oninput="frase()">
+
+    <span>Qual letra você quer ver ?</span>
+    <input type="text" id="ipt_posicao" oninput="frase()">
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function frase(){
+        let frase = ipt_frase.value
+        let posicao = Number(ipt_posicao.value)
+        let PLetra = frase[0]
+        let ULetra = frase[frase.length-1]
+        let posicaoLetra = frase[posicao - 1]
+
+
+        div_exibir.innerHTML = `A primeira letra é ${PLetra}<br>
+        A ultima letra é ${ULetra}<br>
+        A ${posicao}° letra é: ${posicaoLetra}`
+    }  
+</script>

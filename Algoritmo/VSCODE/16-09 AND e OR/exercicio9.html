@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9</title>
+</head>
+<body>
+    <span>Plano de saude :</span>
+    <select id="select_plano">
+        <option>Premium</option>
+        <option>Básico</option>
+    </select>
+
+    <span>Hora atual</span>
+    <input type="text" id="ipt_hora">
+
+    <span>Checkin biometrico validado ? </span>
+    <select id="select_checkin">
+        <option>Sim</option>
+        <option>Não</option>
+    </select>
+
+    <button onclick="verificar()">Liberar catraca</button>
+</body>
+</html>
+
+<script>
+    function verificar(){
+        let plano = select_plano.value
+        let hora = Number(ipt_hora.value)
+        let checkin = select_checkin.value
+
+        if(checkin == 'Sim' && plano == 'Premium' || checkin == 'Sim' && (plano == 'Básico' && hora >= 6 && hora <= 22)){
+            alert ('Acesso liberado')
+        } else {
+            alert ('Acesso negado')
+        }
+    }
+</script>

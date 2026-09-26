@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16</title>
+</head>
+<body>
+    <span>Numero:</span>
+    <input type="text" id="ipt_numero">
+
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function analisar(){
+        let n1 = Number(ipt_numero.value)
+        let n2 = n1 % 2
+
+        if (n2 == 0) {
+        div_exibir.innerHTML = `Esse número é PAR`
+        }
+
+        if (n2 == 1) {
+        div_exibir.innerHTML = `Esse número é IMPAR`
+        }
+    }
+</script>   

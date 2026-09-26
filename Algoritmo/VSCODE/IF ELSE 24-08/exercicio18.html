@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18</title>
+</head>
+<body>
+    <span>Chocolates comprados</span>
+    <input type="text" id="ipt_chocolate">
+
+    <button onclick="compra()">Compra</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function compra(){
+        let choco = Number (ipt_chocolate.value)
+
+        if (choco > 12){
+            div_exibir.innerHTML = `o valor da sua compra foi de ${choco * 2.50}`
+        }
+        else {
+            div_exibir.innerHTML = `o valor da sua compra foi de ${choco * 3.00}`
+        }
+    }
+</script>

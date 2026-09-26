@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13</title>
+</head>
+
+<body>
+    <span>Pokemon Inicial</span>
+    <input type="text" id="ipt_pokemon">
+
+    <button onclick="escolher()">Escolher Pokemon</button>
+    <div id="div_exibir"></div>
+    
+
+</body>
+
+</html>
+
+<script>
+    function escolher() {
+        let pokemon = ipt_pokemon.value
+
+            if (pokemon == "Bulbasaur") {
+                div_exibir.innerHTML = `<img src="https://images.gameinfo.io/pokemon/256/p1f87.png alt="">`
+            } else if (pokemon == "Charmander") {
+                div_exibir.innerHTML = `<img src="https://www.pokemon.com/br/pokedex/charmander" alt="">`
+            } else if (pokemon == "Squirtle") {
+                div_exibir.innerHTML = `<img src="https://pokemonet.fandom.com/pt-br/wiki/Squirtle" alt="">`
+            } else {
+                div_exibir.innerHTML = `Pokémon não reconhecido.`
+            }
+    }
+</script>''

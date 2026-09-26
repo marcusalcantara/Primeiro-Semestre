@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Como você está se sentindo hoje</span>
+    <input type="text" id="ipt_humor">
+
+    <button onclick="mostrar()">Mostrar Humor</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function mostrar(){
+        let humor = (ipt_humor.value)
+            if (humor == 'Feliz'){
+                div_exibir.innerHTML = `😀`
+            } else if (humor == 'Triste'){
+                div_exibir.innerHTML = `😭`
+            } else if (humor == 'Bravo'){
+                div_exibir.innerHTML = `😡`
+            } else if (humor == 'Surpreso'){
+                div_exibir.innerHTML = `😯`
+            } else if (humor == 'Cansado'){
+                div_exibir.innerHTML = `😴`
+            }
+    }
+</script>

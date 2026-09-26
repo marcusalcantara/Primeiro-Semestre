@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <span>Nome do aluno</span>
+    <input type="text" id="input_nome" value="">
+
+    <span>Nota continuada</span>
+    <input type="text" id="input_continuada" value="">
+
+    <span>Nota semestral</span>
+    <input type="text" id="input_semestral" value="">
+    
+    <div id="div_exibir"></div>
+
+    <button onclick="desempenho()">Desempenho</button>
+</body>
+</html>
+
+<script>
+    function desempenho(){
+       let nome = input_nome.value;
+       let n1 = Number (input_continuada.value)
+       let n2 = Number (input_semestral.value)
+       let n3 = n1 * 0.4
+       let n4 = n2 * 0.6
+       let media = n3 + n4
+       let mensagem = `A média de ${nome} será de ${media}`
+       div_exibir.innerHTML = mensagem
+
+    }
+</script>

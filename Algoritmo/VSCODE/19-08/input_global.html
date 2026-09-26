@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+</head>
+<body>
+    <span>Nome:</span>
+    <input type="text" id="ipt_nome"><br>
+    <button onclick="alertar()">Cumprimentar Alert</button>
+    <button onclick="cumprimentar()">Cumprimentar innerHTML</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    //let nome = ipt_nome.value//
+
+    function alertar(){
+        let nome = ipt_nome.value;
+        alert(`Olá, ${nome}!`);
+    }
+
+    function cumprimentar () {
+        let nome = ipt_nome.value;
+        div_mensagem.innerHTML = `Olá, ${nome}!`;
+    }
+</script>

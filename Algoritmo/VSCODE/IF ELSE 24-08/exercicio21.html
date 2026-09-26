@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Temperatura do ambiente</span>
+    <input type="text" id="ipt_temp">
+    <button onclick="verifica()">Verificar clima</button>
+    <div id="div_exibir"></div>
+    
+</body>
+</html>
+
+<script>
+    function verifica(){
+        let temp = Number (ipt_temp.value)
+        if(temp < 10){
+            div_exibir.innerHTML = `Apropriada p/ conservar alimento<br><img src="https://images.aws.nestle.recipes/original/1821a30a8a8acec9f74a1372be582610_sem_t%C3%ADtulo_(18).jpg" alt="">`
+        }
+        else {
+            div_exibir.innerHTML = `Inapropriada p/ conservar alimento<br><img src="https://i.redd.it/m7qasgnsfok71.jpg" alt="">`
+        }
+    }
+</script>

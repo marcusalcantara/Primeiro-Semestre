@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <span>Digite o seu primeiro número</span>
+    <input type="text" id="input_numero1" value="">
+
+    <span> Digite o seu segundo número</span>
+    <input type="text" id="input_numero2" value="">
+
+    <button onclick="soma()"> Somar </button>
+    <button onclick="diferenca()"> Diferença  </button>
+    <button onclick="produto()"> Produto </button>
+    <button onclick="razao()"> Razão </button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function soma() {
+        let n1 = Number (input_numero1.value)
+        let n2 = Number (input_numero2.value)
+        resultado = n1 + n2
+        let mensagem = `A soma entre ${n1} e ${n2} é : ${resultado}`
+
+        div_exibir.innerHTML = mensagem
+      } 
+
+    function diferenca() {
+        let n1 = Number (input_numero1.value)
+        let n2 = Number (input_numero2.value)
+        resultado = n1 - n2
+        let mensagem = `A diferença entre ${n1} e ${n2} é : ${resultado}`
+
+        div_exibir.innerHTML = mensagem
+    } 
+
+    function produto() {
+        let n1 = Number (input_numero1.value)
+        let n2 = Number (input_numero2.value)
+        resultado = n1 * n2
+        let mensagem = `A produto entre ${n1} e ${n2} é : ${resultado}`
+
+        div_exibir.innerHTML = mensagem
+    } 
+
+    function razao() {
+        let n1 = Number (input_numero1.value)
+        let n2 = Number (input_numero2.value)
+        resultado = n1 / n2
+        let mensagem = `A razão entre ${n1} e ${n2} é : ${resultado}`
+
+        div_exibir.innerHTML = mensagem
+    } 
+
+</script>

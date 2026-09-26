@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7</title>
+</head>
+
+<body>
+    <span>Senha Usuario:</span>
+    <input type="text" id="ipt_senha" oninput="senha()">
+
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    function senha() {
+        let senha = ipt_senha.value
+        let senhaQtd = senha.length
+        let criterio = 0
+
+        if (senhaQtd >= 8) {
+            criterio++
+        }
+        if (senha != senha.toLowerCase()) {
+            criterio++
+        }
+        if (senha != senha.toUpperCase()) {
+            criterio++
+        }
+
+        if (criterio == 0) {
+            div_exibir.innerHTML = `Insegura`
+        } else if (criterio == 1) {
+            div_exibir.innerHTML = `Fraca`
+        } else if (criterio == 2) {
+            div_exibir.innerHTML = `Média`
+        } else {
+            div_exibir.innerHTML = `Forte`
+        }
+    }
+</script>

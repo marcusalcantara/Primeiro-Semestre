@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Divisor:
+    <input type="text" id="ipt_divisor"><br>
+
+    Dividendo:
+    <input type="text" id="ipt_dividendo"><br>
+
+    <button onclick="calcular()">Calcular Resto</button> <br>
+    <button onclick="dividir()">Calcular Divisão</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function dividir() {
+        let divisor = Number(ipt_divisor.value)
+        let dividendo = Number (ipt_dividendo.value)
+
+        let resultado = divisor / dividendo
+        let resultadoFormatado = resultado.toFixed(2);
+        let resultadoInteiro = resultado.toFixed(0)
+
+        div_mensagem.innerHTML = `A divisão de ${divisor} por ${dividendo} resulta em: ${resultado} <br> Resultado Formatado: ${resultadoFormatado} <br> Resultado Inteiro ${resultadoInteiro} `
+    }
+
+    function calcular() {
+        let divisor = Number(ipt_divisor.value);
+        let dividendo = Number (ipt_dividendo.value);
+
+        let resto = divisor % dividendo
+
+        div_mensagem.innerHTML = `A divisão de ${divisor} por ${dividendo} possui resto ${resto}`;
+    }
+</script>

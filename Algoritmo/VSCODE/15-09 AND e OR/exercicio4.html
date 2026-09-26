@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <span>Login</span>/
+    <input type="text" id="ipt_usuario">
+
+    <span>Senha</span>
+    <input type="text" id="ipt_senha">
+
+    <span>Informação pessoal</span>
+    <input type="text" id="ipt_info">
+
+    <button onclick="autenticar()">autenticar</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function autenticar(){
+        let senha = ipt_senha.value
+        let user = ipt_usuario.value
+        let info = ipt_info.value
+
+        if (user == 'ana' && (senha == 'braga') && (info == '1949' || info == 'louro josé')){
+            div_exibir.innerHTML = `Usuário autenticado`
+        } else {
+            div_exibir.innerHTML = `Falha na autenticação`
+        }
+    }
+</script>

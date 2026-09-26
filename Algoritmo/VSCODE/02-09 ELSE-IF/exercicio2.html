@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+</head>
+
+<body>
+    <span>Renda familiar mensal</span>
+    <input type="text" id="ipt_renda">
+
+    <button onclick="renda()">Analisar Renda</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    function renda() {
+        let renda = Number(ipt_renda.value)
+        if (renda <= 250) {
+            div_exibir.innerHTML = `Classe E`
+        } else if (renda <= 900) {
+            div_exibir.innerHTML = `Classe D`
+        }
+        else if (renda <= 2500) {
+            div_exibir.innerHTML = `Classe C`
+        }
+        else if (renda <= 9500){
+            div_exibir.innerHTML = `Classe B`
+        }
+        else {
+            div_exibir.innerHTML = `Classe A`
+        }
+    }
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+    <span>Informe o nome do aluno</span>
+    <input type="text" id="input_nome" value="">
+
+    <span>Informe o valor da atividade 1</span>
+    <input type="text" id="input_atv1" value="">
+
+    <span>Informe o valor da atividade 2</span>
+    <input type="text" id="input_atv2" value="">
+
+    <span>Informe o valor da atividade 3</span>
+    <input type="text" id="input_atv3" value="">
+
+    <button onclick="atividade()">Mostrar Nota</button>
+
+    <div id="div_exibir"></div>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    function atividade() {
+    let nome = input_nome.value;
+    let n1 = Number (input_atv1.value);
+    let n2 = Number (input_atv2.value);
+    let n3 = Number (input_atv3.value);
+    let resultado = n1 + n2 + n3;
+    let media = resultado / 3
+    let mensagem = `A soma das suas três atividades é: ${resultado} <br> ${nome}, a média das sua atividades é ${media}`
+    div_exibir.innerHTML = mensagem
+    }
+
+    
+</script>

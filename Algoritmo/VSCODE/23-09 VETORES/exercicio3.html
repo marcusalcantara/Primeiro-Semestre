@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Bairros onde morei:</span>
+    <input type="text" id="ipt_bairro">
+
+    <span>Numero do local</span>
+    <input type="text" id="ipt_numero">
+
+    <button onclick="adicionar()">Cadastrar bairro</button>
+    <button onclick="moradia()">Relembrar moradia</button>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let lista = []
+    
+   
+    function adicionar(){
+        let bairro = ipt_bairro.value
+        lista.push(bairro)  
+    }
+
+    function moradia(){
+        let numero = Number(ipt_numero.value)
+
+        if (numero > lista.length){
+            div_exibir.innerHTML = `Você ainda não morou num ${numero} bairro`
+        } else {
+            div_exibir.innerHTML = `${lista[numero - 1]}`
+        }
+    }
+</script>

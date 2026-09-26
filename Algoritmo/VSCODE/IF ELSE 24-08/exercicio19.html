@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19</title>
+</head>
+<body>
+    <span>Meta de economia ?</span>
+    <input type="text" id="ipt_meta"><br>
+
+    <span>Dinheiro guardado</span>
+    <input type="text" id="ipt_guardado"><br>
+
+    <button onclick="economia()">Analisar economia</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function economia(){
+        let economia = Number(ipt_meta.value)
+        let guardado = Number(ipt_guardado.value)
+        let meta = guardado - economia
+        let falta = economia - guardado
+
+        if(guardado >= economia){
+            div_exibir.innerHTML = `Parabéns, meta alcançada`
+        }
+        if(guardado > economia){
+            div_exibir.innerHTML += ` Meta ultrapassada em R$${meta}`
+        }
+        if(guardado < economia){
+            div_exibir.innerHTML = `Força! Ainda em busca da meta! Falta R$${falta}`
+        }
+    }
+</script>
+

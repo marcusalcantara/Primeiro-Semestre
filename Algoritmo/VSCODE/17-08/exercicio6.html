@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+</head>
+
+<body>
+    <span>Informe a quantidade de votos do candidato 1</span><br>
+    <input type="text" id="input_cand1" value=""><br>
+
+    <span>Informe a quantidade de votos do candidato 2</span><br>
+    <input type="text" id="input_cand2" value=""><br>
+
+    <span>Informe a quantidade de votos brancos que houve na eleição</span><br>
+    <input type="text" id="input_votobranco"><br>
+
+    <span>Informe a quantidade de votos nulos que houve na eleição</span><br>
+    <input type="text" id="input_votonulo"><br>
+
+    <button onclick="resultado()">Resultado da Eleição</button>
+
+    <div id="div_exibir"></div>
+
+</body>
+
+</html>
+
+<script>
+    function resultado() {
+        
+        let cand1 = Number(input_cand1.value)
+        let cand2 = Number(input_cand2.value)
+        let votob = Number(input_votobranco.value)
+        let voton = Number(input_votonulo.value)
+
+        let total = cand1 + cand2 + votob + voton
+        let media1 = (cand1 / total) * 100
+        let media2 = (cand2 / total) * 100
+        let media3 = ((votob + voton) / total) * 100
+
+        let mensagem = `Total de votos: ${total} <br>  Candidato A: ${media1}% <br> Candidato B: ${media2}% <br> Inválidos: ${media3}%`
+
+        div_exibir.innerHTML = mensagem
+
+    }
+</script>
