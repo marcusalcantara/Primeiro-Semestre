@@ -439,3 +439,96 @@ RIGHT JOIN artista1
 ON musica1.fkArtista = artista1.idArtista;
 
 --  EXERCICIO 4
+
+USE sprint2;
+CREATE TABLE cliente(
+idCliente INT PRIMARY KEY auto_increment,
+nome VARCHAR(45),
+telefone CHAR(11),
+email VARCHAR(45),
+constraint chkEmail CHECK(email LIKE '%@%')
+);
+
+INSERT INTO cliente VALUES 
+	(default, 'Marcus Vinicius', 11982520162, 'marcus123@gmail.com'),
+	(default, 'Reenan Gomes', 11982520155, 'renan123@gmail.com'),
+	(default, 'Peppa Pig', 11982520199, null);
+    
+CREATE TABLE veiculo(
+idVeiculo INT PRIMARY KEY auto_increment,
+placa VARCHAR(12),
+marca VARCHAR(30),
+modelo VARCHAR(20),
+ano YEAR,
+fkCliente INT,
+CONSTRAINT foreign key (fkCliente) REFERENCES cliente(idCliente)
+);
+
+INSERT INTO veiculo VALUES
+(default, 'HHZZ-PPLL', 'Novo', 'Brabo', '2011', 1),
+(default, 'HHII-PPLL', 'Lala', 'Lala', '2017', 2),
+(default, 'HHWW-PPLL', 'Paa', 'Liu', '2016', 3),
+(default, 'HHCC-PPLL', 'Sandero', 'Nanana', '2015', 1),
+(default, 'HHAA-PPLL', 'Ford', 'Ranino', '2018', 2);
+
+SELECT veiculo.placa, veiculo.modelo, veiculo.marca FROM veiculo;
+
+SELECT * FROM veiculo 
+	WHERE marca = 'Ford';
+
+SELECT * FROM veiculo 
+	ORDER BY ano DESC;
+    
+SELECT * FROM veiculo 
+	WHERE ano < 2015;
+    
+SELECT veiculo.placa AS Placa_do_Veiculo, veiculo.modelo AS Modelo_do_Carro
+FROM veiculo;
+
+SELECT cliente.nome AS Proprietario, cliente.telefone AS Contato
+FROM cliente;
+
+SELECT ano, YEAR(CURDATE()) - ano AS Idade_do_Veiculo
+FROM veiculo;
+
+SELECT concat(veiculo.marca, ' ',veiculo.modelo) AS veiculoCompleto
+FROM veiculo;
+
+SELECT veiculo.placa,
+	CASE
+		WHEN ano >= 2020 then 'Novo'
+        WHEN ano >= 2010 AND ano <= 2019 THEN 'Seminovo'
+        ELSE 'Antigo' END AS classificacao FROM veiculo;
+        
+SELECT veiculo.placa,
+	CASE
+		WHEN marca LIKE '%Chevrolet%' 
+        OR marca LIKE '%Fiat%' 
+        OR marca LIKE '%Volks%' then 'Nacional'
+        ELSE 'Importado' END AS top_marca FROM veiculo;
+        
+SELECT cliente.nome,
+	CASE
+		WHEN email LIKE '%%' THEN 'Sim'
+        ELSE 'Nao' END AS possui_email FROM cliente;
+
+SELECT veiculo.placa,
+	CASE
+		WHEN ano >= 2000 AND ano < 2010 THEN 'ANOS 2000'
+		WHEN ano >= 2010 AND ano < 2020 THEN 'ANOS 2010'
+        ELSE 'ANOS 202O' END AS decada FROM veiculo;
+        
+SELECT cliente.nome, IFNULL(email, 'Email nao cadastrado') AS EMAIL
+FROM cliente;
+
+SELECT veiculo.*, IFNULL(cliente.nome, 'Sem dono') AS CLIENTE
+FROM veiculo LEFT JOIN cliente ON fkCliente = idCliente;
+
+SELECT veiculo.placa, veiculo.modelo, cliente.nome
+from veiculo join cliente ON fkCliente = idCliente;
+
+SELECT concat(veiculo.placa,' ', veiculo.modelo,' ', cliente.nome) AS Registro
+FROM veiculo JOIN cliente ON idCliente = fkCliente;
+
+SELECT cliente.*, veiculo.marca
+FROM cliente RIGHT JOIN veiculo ON fkCliente = idCliente;
