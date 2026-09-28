@@ -700,3 +700,18 @@ SELECT modelo,
 		WHEN tamanho < 38 THEN 'Pequeno'
         WHEN tamanho >= 38 && tamanho <= 42 THEN 'Médio'
         ELSE 'Grande' END AS 'numeração' FROM tenis;
+        
+SELECT marca.nome, IFNULL(pais, 'Origem desconhecida') AS Origem
+FROM marca;
+
+SELECT marca.nome FROM tenis LEFT JOIN marca ON idMarca = fkMarca;
+
+SELECT tenis.modelo, tenis.preco, marca.nome FROM tenis join marca
+ON idMarca = fkMarca;
+
+SELECT CONCAT(modelo,' ',categoria,' ',nome) AS 'Modelo-Categoria-Marca' 
+FROM tenis JOIN marca ON idMarca = fkMarca;
+
+SELECT * FROM marca RIGHT JOIN tenis 
+ON idMarca = fkMarca;
+
