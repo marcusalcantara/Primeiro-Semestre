@@ -30,29 +30,74 @@
 </html>
 
 <script>
-    let venda
-    let recebimento
-    let desconto
+    let venda = 0
+    let recebimento = 0
+    let desconto = 0
+    let qtdGasolina = 0
+    let qtdEtanol = 0
+    let qtdDiesel = 0
 
     function relatorio() {
         let combustivel = select_combustivel.value
-        let qtdVendida = Number(ipt_quantidade, value)
+        let qtdVendida = Number(ipt_quantidade.value)
         let horaVenda = Number(ipt_hora.value)
-        let total = 0
+        let valorVenda = 0
+        let descontoVenda = 0
+        let valorRecebido = 0
+
 
         if (combustivel == `Gasolina`) {
-            div_exibir.innerHTML = `${total * qtdVendida}`
+            valorVenda = 6.49 * qtdVendida
         } else if (combustivel == 'Etanol') {
-            div_exibir.innerHTML = `${precoEtanol * qtdVendida}`
+            valorVenda = 4.44 * qtdVendida
         } else if (combustivel == 'Diesel') {
-            div_exibir.innerHTML = `${precoDiesel * qtdVendida}`
+            valorVenda = 4.39 * qtdVendida
         }
 
-        if (qtdVendida >= 20 && (horaVenda >= 21 && horaVenda <= 6)) {
-            precoGasolina = precoGasolina - (precoGasolina * 0.0505)
-            precoEtanol = precoEtanol - (precoEtanol * 0.048)
-            precoDiesel = precoDiesel - (precoDiesel * 0.0303)
+        if (combustivel == 'Gasolina' && qtdVendida >= 20 && (horaVenda >= 21 || horaVenda <= 6)) {
+            descontoVenda = valorVenda * 0.0505
+        } else if (combustivel == 'Etanol' && qtdVendida >= 20 && (horaVenda >= 21 || horaVenda <= 6)) {
+            descontoVenda = valorVenda * 0.048
+        } else if (combustivel == 'Diesel' && qtdVendida >= 20 && (horaVenda >= 21 || horaVenda <= 6)) {
+            descontoVenda = valorVenda * 0.0303
         }
+
+        valorRecebido = valorVenda - descontoVenda
+        recebimento += valorRecebido
+        desconto += descontoVenda
+        venda++
+
+        if (combustivel == 'Gasolina') {
+            qtdGasolina += qtdVendida
+        } else if (combustivel == 'Etanol') {
+            qtdEtanol += qtdVendida
+        } else if (combustivel == 'Diesel') {
+            qtdDiesel += qtdVendida
+        }
+
+        div_exibir.innerHTML += `Venda ${venda} - Valor Recebido R$${valorRecebido.toFixed(2)} - Desconto Concedido R$${descontoVenda.toFixed(2)} - Acumulado dos Recebimentos R$${recebimento.toFixed(2)} - Acumulado dos Descontos ${desconto.toFixed(2)}<br>`
+
+
+    }
+
+    function encerrar() {
+        let totalLitros = qtdGasolina + qtdDiesel + qtdEtanol
+        let porcentagemGaso = qtdGasolina / totalLitros * 100
+        let porcentagemEta = qtdEtanol / totalLitros * 100
+        let porcentagemDie = qtdDiesel / totalLitros * 100
+        div_exibir.innerHTML = ``
+        div_exibir.innerHTML += `Valor total recebido R$${recebimento.toFixed(2)} <br> Valor total dos descontos R$${desconto.toFixed(2)}<br> <br> Quantidade de gasolina vendida = ${qtdGasolina.toFixed(2)} litros == ${porcentagemGaso.toFixed(1)}% <br> Quantidade de etanol vendida = ${qtdEtanol.toFixed(2)} litros == ${porcentagemEta.toFixed(1)}% <br> Quantidade de diesel vendida = ${qtdDiesel.toFixed(2)} litros == ${porcentagemDie.toFixed(1)}% `
+
+        venda = 0
+        recebimento = 0
+        desconto = 0
+        qtdGasolina = 0
+        qtdEtanol = 0
+        qtdDiesel = 0
+
+        ipt_quantidade.value = ''
+        ipt_hora.value = ''
+        select_combustivel.value = 'Gasolina'
     }
 
 </script>
