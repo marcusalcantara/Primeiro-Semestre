@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <span>Noma da pessoa que você mais ama :</span>
+    <input type="text" id="ipt_amor">
+
+    <span>Digite um número do quanto você a ama</span>
+    <input type="text" id="ipt_numero">
+
+    <button onclick="amor()">Expressar amor</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function amor(){
+        let contador = 1
+        let amor = ipt_amor.value
+        let num = Number(ipt_numero.value)
+
+        while(contador <= num){
+            div_exibir.innerHTML += `${contador} - ${amor} <br>`
+            contador ++
+        }
+    }
+</script>
