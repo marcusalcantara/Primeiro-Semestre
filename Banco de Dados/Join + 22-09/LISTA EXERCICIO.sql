@@ -532,3 +532,62 @@ FROM veiculo JOIN cliente ON idCliente = fkCliente;
 
 SELECT cliente.*, veiculo.marca
 FROM cliente RIGHT JOIN veiculo ON fkCliente = idCliente;
+
+-- EXERCICIO 5
+USE sprint2;
+CREATE TABLE equipe (
+idEquipe INT primary KEY auto_increment,
+nome VARCHAR(45),
+regiao VARCHAR(45),
+ranking INT
+);
+
+DROP TABLE equipe;
+ALTER TABLE equipe MODIFY COLUMN ranking INT UNIQUE;
+
+INSERT INTO equipe VALUES
+	(default, 'Team Liquid', 'América', 1),
+	(default, 'Loud', 'América', 2),
+	(default, 'Vivo Keyd', null, null);
+    
+CREATE TABLE jogador(
+idJogador INT primary key auto_increment,
+nick VARCHAR(45),
+nome VARCHAR(45),
+funcao VARCHAR(45),
+CONSTRAINT chkFuncao CHECK (funcao IN ('Rifler', 'Awper', 'Entry', 'IGL', 'Suporte')),
+fkEquipe INT
+);
+
+ALTER TABLE jogador ADD CONSTRAINT foreign key (fkEquipe)
+references equipe(idEquipe);
+
+INSERT INTO jogador VALUES
+(default, 'Fer', 'Felipe', 'Entry', 1),
+(default, 'Gau', null, null, null),
+(default, 'VelhoVamp', 'Peppa', 'IGL', 3),
+(default, 'Coldzera', 'Marcelo', 'Entry', 1),
+(default, 'Felps', 'Gustavo', 'Awper', 2);
+
+SELECT * FROM equipe;
+select * FROM jogador;
+
+SELECT jogador.nick, jogador.funcao FROM jogador;
+
+SELECT * FROM jogador 
+WHERE funcao = 'Awper';
+
+SELECT * FROM equipe ORDER BY ranking ASC;
+
+SELECT * from jogador
+WHERE nick LIKE 'F%';
+
+SELECT nick AS Nick, nome AS NomeVerdadeiro
+FROM jogador;
+
+SELECT equipe.nome AS 'Time', equipe.regiao AS Região_Competitiva
+FROM equipe;
+
+SELECT equipe.ranking AS 'Posição no Ranking Mundial' FROM equipe;
+
+SELECT CONCAT(nick, ' ', funcao) AS 'Jogador e Função'FROM jogador;
