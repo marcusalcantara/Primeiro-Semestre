@@ -591,3 +591,112 @@ FROM equipe;
 SELECT equipe.ranking AS 'Posição no Ranking Mundial' FROM equipe;
 
 SELECT CONCAT(nick, ' ', funcao) AS 'Jogador e Função'FROM jogador;
+
+SELECT equipe.nome,
+CASE
+	WHEN ranking <= 5 THEN 'Tier 1'
+    WHEN ranking >= 6 && ranking <=20 THEN 'Tier 2'
+    ELSE 'Tier 3' END AS nivel FROM equipe;
+    
+SELECT jogador.nick,
+CASE
+	WHEN funcao = 'Entry' OR 'Rifler' THEN 'Agressivo'
+    WHEN funcao = 'Awper' THEN 'Sniper'
+    ELSE funcao = 'Tático' END AS tipo_funcao FROM jogador;
+    
+SELECT equipe.nome,
+	CASE
+		WHEN regiao = 'América' THEN 'Ocidente'
+        ELSE 'Oriente' END AS continente FROM equipe;
+        
+SELECT jogador.nick,
+	CASE 
+		WHEN funcao = 'IGL' THEN 'Sim - In-Game Leader'
+		ELSE 'Não' END AS líder FROM jogador;
+        
+SELECT equipe.nome, IFNULL(ranking , 'Sem Ranking') AS Ranking
+	FROM equipe;
+    
+SELECT jogador.nome, equipe.nome
+	FROM jogador LEFT JOIN equipe ON fkEquipe = idEquipe;
+    
+SELECT jogador.nick, jogador.funcao, equipe.nome
+	FROM jogador JOIN equipe ON fkEquipe = idEquipe;
+    
+SELECT CONCAT(jogador.nick,' ', jogador.funcao,' ', equipe.nome) AS perfil
+	FROM equipe JOIN jogador ON fkEquipe = idEquipe;    
+    
+SELECT equipe.*
+	FROM equipe RIGHT JOIN equipe ON fkEquipe = idEquipe;
+    
+-- EXERCICIO 6
+
+CREATE TABLE marca(
+idMarca INT PRIMARY KEY auto_increment,
+nome VARCHAR(45),
+pais VARCHAR(45)
+);
+
+INSERT INTO marca VALUES
+	(default, 'Nike', 'EUA'),
+	(default, 'Nike', 'EUA'),
+	(default, 'Adidas', null);
+    
+CREATE TABLE tenis(
+idTenis INT primary KEY auto_increment,
+modelo VARCHAR(45),
+tamanho INT,
+preco DECIMAL(10,2),
+categoria VARCHAR(45),
+CONSTRAINT cCategoria CHECK(categoria IN('Corrida', 'Casual', 'Basquete', 'Futebol')),
+fkMarca INT,
+CONSTRAINT foreign key (fkMarca) REFERENCES marca(idMarca)
+);
+
+INSERT INTO tenis VALUES
+	(default, 'Baska', 40, '100', 'Basquete', 1),
+	(default, 'Nike Tiempo', 38, '400', 'Futebol', 2),
+	(default, 'Volei', 36, '100', 'Casual', null),
+	(default, 'Arrasca', 37, '175', 'Basquete', 3),
+	(default, 'Salubre', 44, '144', 'Corrida', 1);
+    
+SELECT modelo, preco FROM tenis;
+
+SELECT * from tenis 
+	WHERE categoria = 'Corrida';
+    
+SELECT * FROM tenis ORDER BY preco DESC;
+
+SELECT * from tenis WHERE tamanho >= 40;
+
+SELECT tenis.modelo AS produto, preco AS 'Valo(R$)' FROM tenis;
+
+select nome AS 'Fabricante', pais AS 'País' FROM marca;
+
+SELECT modelo, preco + (preco*0.15) AS 'Preço com Frete' FROM tenis;
+
+SELECT concat(modelo,' ',tamanho) AS 'Descrição produto'
+FROM tenis;
+
+SELECT modelo, 
+	CASE
+		WHEN preco < 200 THEN 'Economico'
+		WHEN preco >= 200 AND preco <= 500 THEN 'Intermediario'
+		ELSE 'Premium' END AS 'Faixa Preço' FROM tenis;
+        
+SELECT modelo, 
+	CASE
+		WHEN categoria = 'Corrida' THEN 'Esporte - Performance'
+		WHEN categoria = 'Casual' THEN 'Dia a Dia'
+		ELSE 'Esporte - Específico' END AS 'Uso' FROM tenis;
+	
+SELECT nome,
+	CASE 
+		when pais = 'Brasil' THEN 'Nacional'
+        ELSE 'Importado' END AS Origem from marca;
+        
+SELECT modelo,
+	case
+		WHEN tamanho < 38 THEN 'Pequeno'
+        WHEN tamanho >= 38 && tamanho <= 42 THEN 'Médio'
+        ELSE 'Grande' END AS 'numeração' FROM tenis;
