@@ -6,6 +6,39 @@
     <title>11</title>
 </head>
 <body>
-    <span></span>
+    <span>Qual Tabuada você quer ver ?</span>
+    <select id="select_tabuada">
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+    </select>
+
+    <span>Até que número a tabuada vai ser constituida ?</span>
+    <input type="text" id="ipt_limite" class="value">
+        
+    <button onclick="tabuada()">Ver Tabuada</button>
+    <div id="div_exibir"></div>
 </body>
 </html>
+
+<script>
+    function tabuada(){
+        let tabuada = Number(select_tabuada.value)
+        let contador = 0
+        let limite = Number(ipt_limite.value)
+        while (contador < limite){
+            contador ++     
+            if (contador % 2 == 0){
+                div_exibir.innerHTML += `<span style="color: blue;">${tabuada} x ${contador} = ${tabuada * contador}</span> <br>`
+            } else{
+                div_exibir.innerHTML += `<span style="color: red;">${tabuada} x ${contador} = ${tabuada * contador}</span><br>`
+            } 
+            
+        }
+    }
+</script>
