@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>10</title>
 </head>
 <body>
-    
+    <span>Digite um número</span>
+    <input type="text" id="ipt_num1">
+
+    <span>Digite outro número, mas maior que o primeiro:</span>
+    <input type="text" id="ipt_num2">
+
+    <button onclick="numero()">S2 Pares</button>
+    <div id="div_exibir"></div>
 </body>
 </html>
+
+<script>
+    function numero(){
+        let n1 = Number(ipt_num1.value)
+        let n2 = Number(ipt_num2.value)
+        let contador = n1
+
+        while(contador <= n2){
+            if(contador % 2 == 0){
+                div_exibir.innerHTML += `<br>${contador}`
+            } 
+            contador++
+        }
+    }
+</script>
