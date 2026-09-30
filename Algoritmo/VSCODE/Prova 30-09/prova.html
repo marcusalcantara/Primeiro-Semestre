@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrida</title>
+</head>
+
+<body>
+    <span>Tamanho da pista:</span>
+    <input type="text" id="ipt_tamanho"><br>
+
+    <span>Quantos metros a tartaruga anda por rodada</span>
+    <input type="text" id="ipt_tartaruga"><br>
+
+    <span>Quantos metros o coelho anda por rodada</span>
+    <input type="text" id="ipt_coelho"><br>
+
+    <span>A cada quantas rodadas o coelho dorme ?</span>
+    <input type="text" id="ipt_dorme"><br>
+
+    <button onclick="largada()">Dar a largada</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    let rodada = 0
+    let tartarugaPercorreu = 0
+    let coelhoPercorreu = 0
+    let coelhoSoneca = 0
+    function largada() {
+        let tamanho = Number(ipt_tamanho.value)
+        let tartaruga = Number(ipt_tartaruga.value)
+        let coelho = Number(ipt_coelho.value)
+        let dorme = Number(ipt_dorme.value)
+
+        if (tartaruga <= 0 || coelho <= 0 || dorme <= 0 || tamanho <= 0) {
+            alert('Erro, nenhum valor pode ser menor ou igual a zero')
+        } else if (tartaruga >= coelho) {
+            alert('Tartaruga é mais devagar que um coelho !')
+        } else if (dorme <= 2) {
+            alert('O coelho não dorme em todas as rodadas !')
+        }
+
+        while (tamanho > coelho && tartaruga) {
+            rodada++
+            if (rodada % 0) {
+                coelhoSoneca ++
+            } else if (rodada % dorme != 0){
+                coelhoPercorreu += coelho
+            }
+            tartarugaPercorreu += tartaruga
+            div_exibir.innerHTML = `Rodada: ${rodada} Tartaruga ${tartarugaPercorreu}m | Coelho ${coelhoPercorreu}m"`
+        }
+
+        if(tamanho == tartaruga && coelho){
+            div_exibir.innerHTML = `Empate na rodada ${rodada}.`
+        } else if (tamanho < tartaruga){
+            div_exibir.innerHTML = `Tartaruga venceu na rodada ${rodada}`
+        } else if (tamanho < coelho){
+            div_exibir.innerHTML = `Coelho venceu na rodada ${rodada}`
+        }
+    }
+</script>

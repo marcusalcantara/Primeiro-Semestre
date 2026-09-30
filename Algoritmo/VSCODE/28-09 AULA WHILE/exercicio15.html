@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Digite um número minimo</span>
+    <input type="text" id="ipt_minimo">
+
+    <span>Digite um número máximo</span>
+    <input type="text" id="ipt_maximo">
+
+    <button onclick="curto()">Curto 3 e 5</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function curto(){
+        let minimo = Number(ipt_minimo.value)
+        let maximo = Number(ipt_maximo.value)
+        let contador = minimo
+        while(contador < maximo ){
+            contador++
+            if(contador % 3 == 0 && contador % 5 == 0){
+                div_exibir.innerHTML += `É TRI!!É PENTA! <br>`
+            } else if (contador % 3 == 0){
+                div_exibir.innerHTML += `É TRI! <br>`
+            } else if (contador % 5 == 0){
+                div_exibir.innerHTML += `É PENTA <br>`
+            } else {
+                div_exibir.innerHTML += `${contador}<br>`
+            }
+        }
+    }
+</script>
