@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <span>Selecione um produto para comprar:</span>
+    <select id="select_produto">
+        <option>Notebook</option>
+        <option>Monitor</option>
+        <option>Teclado</option>
+    </select>
+
+    <span>Quantidade vendida</span>
+    <input type="text" id="ipt_venda">
+
+    <span>Hora da venda</span>
+    <input type="text" id="ipt_hora">
+
+    <button onclick="relatorio()">Venda</button>
+    <button onclick="encerrar()">Encerrar dia</button>
+</body>
+</html>
+
+<script>
+    let venda = 0
+    let valorTotal = 0
+    let descontoTotal = 0
+    let qtdNotebook = 0
+    let qtdMonitor = 0
+    let qtdTeclado = 0
+
+    function relatorio(){
+    }
+</script>

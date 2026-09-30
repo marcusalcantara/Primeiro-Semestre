@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14</title>
+</head>
+
+<body>
+    <span>Digite um número maior que o segundo:</span>
+    <input type="text" id="ipt_minimo"><br>
+
+    <span>Digite um número:</span>
+    <input type="text" id="ipt_maximo"><br>
+
+
+
+    <span>Número para teste de divisibilidade(entre 3 e 13)</span>
+    <input type="text" id="ipt_divisivel"><br>
+
+    <button onclick="verificar()">Divisível</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    function verificar() {
+
+        let minimo = Number(ipt_minimo.value)
+        let maximo = Number(ipt_maximo.value)
+        let divisivel = Number(ipt_divisivel.value)
+        let contador = minimo
+
+        if (divisivel >= 3 && divisivel <= 13) {
+            while (contador < maximo) {
+                contador++
+                if (contador % 3 != 0) {
+                    div_exibir.innerHTML += `${contador}<br>`
+                }
+            }
+        }
+    }
+</script>
