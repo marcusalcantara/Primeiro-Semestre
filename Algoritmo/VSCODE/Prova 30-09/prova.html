@@ -47,8 +47,9 @@
 
         while (tamanho > coelho && tartaruga) {
             rodada++
-            if (rodada % 0) {
+            if (rodada % dorme ==  0) {
                 coelhoSoneca ++
+                coelhoPercorreu -= coelho
             } else if (rodada % dorme != 0){
                 coelhoPercorreu += coelho
             }
