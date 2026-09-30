@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+<body>
+    <span>Digite um número</span>
+    <input type="text" id="ipt_numero">
+
+    <span>Digite uma frase</span>
+    <input type="text" id="ipt_frase">
+
+    <button onclick="papagaio()">Papagaio Repetitivo</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function papagaio(){
+        let numero = Number(ipt_numero.value)
+        let frase = ipt_frase.value
+        let contador = 0
+        while(contador < numero){
+            contador ++
+            div_exibir.innerHTML += `${contador}-${frase.repeat(contador) }<br>`
+        }
+    }
+</script>
