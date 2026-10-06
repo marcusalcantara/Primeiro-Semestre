@@ -714,4 +714,3 @@ FROM tenis JOIN marca ON idMarca = fkMarca;
 
 SELECT * FROM marca RIGHT JOIN tenis 
 ON idMarca = fkMarca;
-

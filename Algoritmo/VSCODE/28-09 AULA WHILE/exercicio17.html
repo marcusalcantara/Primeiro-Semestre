@@ -28,11 +28,10 @@
         while (contador <= elefante) {
 
             if (contador == 1) {
-                div_exibir.innerHTML += `1 elefante incomoda muita gente!<br>`
+                div_exibir.innerHTML = `1 elefante incomoda muita gente!<br>`
             } else {
                 div_exibir.innerHTML += `${contador} elefantes, ${palavra.repeat(contador)}muito mais<br>`
             }
-
             contador++
         }
     }

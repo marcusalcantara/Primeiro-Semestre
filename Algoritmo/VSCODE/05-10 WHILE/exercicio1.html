@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Digite um número
+    <input type="text" id="ipt_n1">
+
+    Digite outro número
+    <input type="text" id="ipt_n2">
+
+    <button onclick="divisao()">Divisão por subtrações sucessivas.</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let divisor = 0
+    function divisao(){
+        let n1 = Number(ipt_n1.value)
+        let n2 = Number(ipt_n2.value)
+        let contador = 0
+
+        while (contador < n1){
+            let valor = n1 / n2
+            let resultado = n1 - n2
+            let resto = n1 % n2
+            divisor += resultado
+            contador ++ 
+            div_exibir.innerHTML += `${valor}<br> ${resto}<br> ${divisor}<br>`   
+            }
+        }
+</script>

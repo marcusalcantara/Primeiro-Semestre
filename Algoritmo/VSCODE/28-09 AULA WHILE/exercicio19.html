@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Digite o número do divisor</span>
+    <input type="text" id="ipt_divisor">
+
+    <button onclick="verificar()">Divisor</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verificar(){
+        let divisor = Number(ipt_divisor.value)
+        let contador = 1
+        let divisores = 0
+
+        while(contador <= divisor){
+            if(divisor % contador == 0){
+                div_exibir.innerHTML += `Divisores do número ${divisor}<br> ${contador} <br>`
+                divisores++
+            } contador++
+        }  
+        if(divisores == 2 ){
+                div_exibir.innerHTML += ` O númeroro ${divisor} é um número primo<br>`
+            }
+    }
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <span>Quantos macarons serão vendidos</span>
+    <input type="text" id="ipt_qtdMacarons"><br>
+
+    <span>Quantos brigadeiros serão vendidos</span>
+    <input type="text" id="ipt_qtdBrigadeiro"><br>
+
+    <span>Quantos cupcakes serão vendidos</span>
+    <input type="text" id="ipt_qtdCupcakes"><br>
+
+    <span>Quantos Cheesecakes serão vendidos</span>
+    <input type="text" id="ipt_qtdCheesecakes"><br>
+
+    Preço macaron:
+    <input type="text" id="ipt_pmacaron"><br>
+
+    Preço brigadeiro:
+    <input type="text" id="ipt_pbrigadeiro"><br>
+
+    Preço cupcakes:
+    <input type="text" id="ipt_pcupcake"><br>
+
+    Preço cheesecakes:
+    <input type="text" id="ipt_pcheesecakes"><br>
+
+    <button onclick="verificar()">Verificar Vendas</button>
+    <div id="div_exibir"></div>
+
+</body>
+
+</html>
+
+<script>
+    let venda = 0
+    function verificar() {
+        let QtdMacaron = Number(ipt_qtdMacarons.value)
+        let QtdBrigadeiro = Number(ipt_qtdBrigadeiro.value)
+        let QtdCupcakes = Number(ipt_qtdCupcakes.value)
+        let QtdCheesecakes = Number(ipt_qtdCheesecakes.value)
+
+        let pMacaron = Number(ipt_pmacaron.value)
+        let pBrigadeiro = Number(ipt_pbrigadeiro.value)
+        let pCupcake = Number(ipt_pcupcake.value)
+        let pCheesecake = Number(ipt_pcheesecakes.value)
+
+        if (QtdMacaron < 0 || QtdBrigadeiro < 0 || QtdCupcakes < 0 || QtdCheesecakes < 0 || pMacaron < 0 || pBrigadeiro < 0 || pCupcake < 0 || pCheesecake < 0) {
+            alert('Algum valor menor que zero')
+        } else if (QtdMacaron > 0) {
+            venda++
+            div_exibir.innerHTML = `Número da venda: ${venda}<br> <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron.jpg" alt=""> ${pMacaron}`
+        } else if (QtdBrigadeiro > 0) {
+            venda++
+        } else if (QtdCupcakes > 0) {
+            venda++
+        } else if (QtdCheesecakes > 0) {
+            venda++
+        }
+    }
+</script>
