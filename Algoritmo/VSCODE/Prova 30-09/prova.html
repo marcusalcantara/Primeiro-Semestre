@@ -45,23 +45,25 @@
             alert('O coelho não dorme em todas as rodadas !')
         }
 
-        while (tamanho > coelho && tartaruga) {
+        while (tamanho > coelhoPercorreu && tamanho > tartarugaPercorreu) {
             rodada++
+            tartarugaPercorreu += tartaruga
             if (rodada % dorme ==  0) {
                 coelhoSoneca ++
                 coelhoPercorreu -= coelho
-            } else if (rodada % dorme != 0){
+                div_exibir.innerHTML = `Rodada: ${rodada} Tartaruga ${tartarugaPercorreu}m | Coelho ${coelhoPercorreu}m`
+            } else{
                 coelhoPercorreu += coelho
+                div_exibir.innerHTML = `Rodada: ${rodada} Tartaruga ${tartarugaPercorreu}m | Coelho ${coelhoPercorreu}m`
             }
-            tartarugaPercorreu += tartaruga
-            div_exibir.innerHTML = `Rodada: ${rodada} Tartaruga ${tartarugaPercorreu}m | Coelho ${coelhoPercorreu}m"`
+            
         }
 
-        if(tamanho == tartaruga && coelho){
+        if(tartarugaPercorreu >= tamanho && coelhoPercorreu >= tamanho){
             div_exibir.innerHTML = `Empate na rodada ${rodada}.`
-        } else if (tamanho < tartaruga){
+        } else if (tartarugaPercorreu >= tamanho){
             div_exibir.innerHTML = `Tartaruga venceu na rodada ${rodada}`
-        } else if (tamanho < coelho){
+        } else if (coelhoPercorreu >= tamanho){
             div_exibir.innerHTML = `Coelho venceu na rodada ${rodada}`
         }
     }

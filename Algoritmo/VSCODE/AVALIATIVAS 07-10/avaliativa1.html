@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    informe quantos depósitos ele fez no banco.
+    <input type="text" id="ipt_deposito"><br>
+
+    informe o valor de cada depósito, pois ele sempre depositava exatamente o mesmo valor.
+    <input type="text" id="ipt_valor"><br>
+
+    informe a cada quantos meses o bônus é aplicado.
+    <input type="text" id="ipt_meses"><br>
+
+    <button onclick="saldo()">Acampanhar grana</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function saldo(){
+        let qtdDeposito = Number(ipt_deposito.value)
+        let valorDeposito = Number(ipt_valor.value)
+        let mesesBonus = Number(ipt_meses.value)
+        let contador = 0
+        let mes = 0
+
+        while(contador < qtdDeposito){
+            mes++
+            
+            valorDeposito += valorDeposito
+            div_exibir.innerHTML += `${mes}°Mês: ${valorDeposito}<br>`
+            contador++
+        }
+        
+        div_exibir.innerHTML += `Total Guardado R$: ${valorDeposito}`
+
+    }
+</script>

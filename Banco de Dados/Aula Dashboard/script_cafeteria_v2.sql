@@ -105,3 +105,4 @@ VALUES
 select cliente.nome AS 'Cliente', produtos.nome AS 'Alimento', pedidos.qtd_produtos AS 'Quantidade', pedidos.qtd_produtos * produtos.preco AS 'Total Gasto'
 FROM cliente JOIN pedidos ON fk_cliente = cliente.id 
 JOIN produtos ON fk_produto = produtos.id;
+

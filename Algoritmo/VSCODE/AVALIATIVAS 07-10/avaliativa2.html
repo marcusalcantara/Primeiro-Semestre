@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Distância inicial semanal do aluno (em km).
+    <input type="text" id="ipt_inicial"><br>
+
+    O percentual de aumento semanal desejado (de 0 a 100).
+    <input type="text" id="ipt_porcentual"><br>
+
+    A meta de distância semanal (em km).
+    <input type="text" id="ipt_meta"><br>
+
+    O número máximo de semanas do plano.
+    <input type="text" id="ipt_nmax"><br>
+
+    <button onclick="verificar()">Gerar planilha</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    function verificar() {
+        let inicial = Number(ipt_inicial.value)
+        let porcentual = Number(ipt_porcentual.value)
+        let meta = Number(ipt_meta.value)
+        let maxSemana = Number(ipt_nmax.value)
+        let semanal = 0
+        let distanciaPercorrida = 0
+
+        if (inicial <= 0) {
+            alert('Inicial tem que ser maior que zero')
+        } else if (porcentual > 1 && porcentual < 10) {
+            alert('Porcentual invalido')
+        } else if (meta <= inicial) {
+            alert('Meta tem que ser maior que a distancia inicial')
+        } else if (maxSemana < 1 && maxSemana > 24) {
+            alert('Semana tem que ser maior que 1 e maior que 24')
+        } else {
+            while (semanal < maxSemana) {
+                semanal++
+                if (semanal % 4 != 0) {
+                    distanciaPercorrida += inicial + (inicial * porcentual)
+                } else if (semanal % 4 == 0) {
+                    distanciaPercorrida += inicial - (inicial * 0.7)
+                }
+            }
+            let porcentual = distanciaPercorrida * meta / 100
+
+            div_exibir.innerHTML += `Semana ${semanal} - ${distanciaPercorrida.toFixed(2)}km(${porcentual.toFixed(2)}% da meta)<br>`
+
+            if(distanciaPercorrida >= meta){
+                div_exibir.innerHTML = `Meta de ${meta} atingida da semeana ${semanal}! Total acumulado no plano: ${distanciaPercorrida.toFixed(2)}km.`
+            }
+        }
+    }
+
+</script>
