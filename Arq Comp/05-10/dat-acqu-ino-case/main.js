@@ -10,7 +10,7 @@ const SERVIDOR_PORTA = 3300;
 // habilita ou desabilita a inserção de dados no banco de dados
 const HABILITAR_OPERACAO_INSERIR = true;
 
-// habilita ou desabilita o modo simulado
+// habilita ou desabilita o modo simul  ado
 // true: gera dados falsos, sem precisar do Arduino (modo treino)
 // false: lê os dados reais do Arduino pela porta serial
 const HABILITAR_SENSORES_SIMULADOS = true;
@@ -29,7 +29,7 @@ const serial = async (
             password: 'Markino/12345',
             database: 'api',
             port: 3300
-        }
+        } ,MIDIInput
     ).promise();
 
     // trata uma linha no formato "digital;analogico", vinda do Arduino ou do simulador

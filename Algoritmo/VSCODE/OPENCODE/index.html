@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Calculadora</title>
+<style>
+*{box-sizing:border-box;font-family:'Space Grotesk','Segoe UI',system-ui,sans-serif}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;background:#050505;position:relative}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,30,50,0.08) 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(200,30,50,0.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+.calc{position:relative;z-index:1;background:linear-gradient(145deg,#0f0f0f 0%,#141414 100%);border-radius:20px;border:1px solid rgba(255,255,255,0.06);box-shadow:0 0 0 1px rgba(200,30,50,0.1),0 30px 80px rgba(0,0,0,0.8),inset 0 1px 0 rgba(255,255,255,0.03);width:100%;max-width:400px;overflow:hidden;animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.display-wrap{position:relative;padding:32px 28px 20px;min-height:130px}
+.display{width:100%;height:70px;font-size:52px;font-weight:300;text-align:right;padding:0;border:none;background:transparent;color:#fff;outline:none;letter-spacing:2px;line-height:1;font-variant-numeric:tabular-nums}
+.display::placeholder{color:rgba(255,255,255,0.15);font-weight:200}
+.expr{position:absolute;top:28px;right:28px;font-size:14px;font-weight:400;color:rgba(200,30,50,0.6);letter-spacing:1px;min-height:18px;font-family:'Space Grotesk',monospace}
+.btn-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:0 20px 24px;gap:10px}
+button{--bg:#1e1e1e;--fg:#fff;--accent:#c81e3a;--glow:rgba(200,30,50,0.4);height:68px;font-size:22px;font-weight:500;border:none;border-radius:14px;cursor:pointer;color:var(--fg);background:var(--bg);position:relative;overflow:hidden;transition:transform 0.1s,box-shadow 0.2s,background 0.2s;user-select:none}
+button::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 50%);opacity:0;transition:opacity 0.2s}
+button::after{content:'';position:absolute;inset:-2px;background:var(--accent);border-radius:16px;opacity:0;filter:blur(8px);transition:opacity 0.2s;z-index:-1}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+button:hover::before{opacity:1}
+button:hover::after{opacity:0.15}
+button:active{transform:translateY(0) scale(0.97);transition:transform 0.05s}
+button:focus-visible{outline:none;box-shadow:0 0 0 3px var(--accent)}
+button.num{--bg:#1a1a1a;box-shadow:inset 0 1px 0 rgba(255,255,255,0.04),0 4px 16px rgba(0,0,0,0.3)}
+button.num:hover{--bg:#242424}
+button.func{--bg:#1a1a1a;--fg:#888;font-weight:400}
+button.func:hover{--bg:#242424;--fg:#aaa}
+button.op{--bg:linear-gradient(145deg,#1a0d10,#0f080a);--fg:#ff3d4f;--accent:#c81e3a;box-shadow:inset 0 1px 0 rgba(255,61,79,0.1),0 4px 16px rgba(0,0,0,0.4)}
+button.op:hover{--bg:linear-gradient(145deg,#221015,#150a0c);--fg:#ff5560}
+button.op[data-active="true"]{--bg:linear-gradient(145deg,#c81e3a,#a01830);--fg:#fff;box-shadow:0 0 24px var(--glow),inset 0 1px 0 rgba(255,255,255,0.2),0 4px 16px rgba(0,0,0,0.4)}
+button.op[data-active="true"]::after{opacity:0.3}
+button.wide{grid-column:span 2}
+@keyframes ripple{0%{transform:scale(0);opacity:0.5}100%{transform:scale(2.5);opacity:0}}
+@keyframes resultPop{0%{transform:scale(1)}30%{transform:scale(1.03)}100%{transform:scale(1)}}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:ripple 0.4s ease-out;pointer-events:none}
+@media (max-width:420px){.calc{max-width:100%;border-radius:0;height:100vh;min-height:100vh}.btn-grid{padding:16px}button{height:62px;font-size:20px;border-radius:12px}.display{font-size:42px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="calc">
+<div class="display-wrap">
+<div class="expr" id="expr"></div>
+<input class="display" id="d" readonly placeholder="0">
+</div>
+<div class="btn-grid">
+<button class="func" onclick="clearAll()">C</button>
+<button class="func" onclick="backspace()">⌫</button>
+<button class="func" onclick="percent()">%</button>
+<button class="op" onclick="addOp('/')" data-op="/">÷</button>
+<button class="num" onclick="addNum('7')">7</button>
+<button class="num" onclick="addNum('8')">8</button>
+<button class="num" onclick="addNum('9')">9</button>
+<button class="op" onclick="addOp('*')" data-op="*">×</button>
+<button class="num" onclick="addNum('4')">4</button>
+<button class="num" onclick="addNum('5')">5</button>
+<button class="num" onclick="addNum('6')">6</button>
+<button class="op" onclick="addOp('-')" data-op="-">−</button>
+<button class="num" onclick="addNum('1')">1</button>
+<button class="num" onclick="addNum('2')">2</button>
+<button class="num" onclick="addNum('3')">3</button>
+<button class="op" onclick="addOp('+')" data-op="+">+</button>
+<button class="num wide" onclick="addNum('0')">0</button>
+<button class="num" onclick="addNum('.')">.</button>
+<button class="op" onclick="calculate()">=</button>
+</div>
+</div>
+<script>
+const d=document.getElementById('d');
+const expr=document.getElementById('expr');
+const ops=document.querySelectorAll('[data-op]');
+let lastOp=null;
+
+function fmt(n){return Number.isInteger(n)?n:parseFloat(n.toFixed(10))}
+function sync(){expr.textContent=d.value.replace(/([+\-*/])/g,' $1 ').replace(/\*/g,'×').replace(/\//g,'÷')}
+
+function addNum(v){
+  if(d.value==='Erro')d.value='';
+  d.value+=v;
+  sync();
+}
+
+function addOp(op){
+  if(d.value==='Erro'||d.value==='')return;
+  const last=d.value.slice(-1);
+  if('+-*/'.includes(last)){d.value=d.value.slice(0,-1)+op;}
+  else d.value+=op;
+  sync();
+  ops.forEach(b=>b.dataset.active='false');
+  document.querySelector(`[data-op="${op}"]`)?.dataset.active='true';
+  lastOp=op;
+}
+
+function clearAll(){
+  d.value='';expr.textContent='';
+  ops.forEach(b=>b.dataset.active='false');
+  lastOp=null;
+}
+
+function backspace(){
+  d.value=d.value.slice(0,-1);
+  sync();
+}
+
+function percent(){
+  try{d.value=String(fmt(eval(d.value)/100));sync()}catch(e){d.value='Erro';expr.textContent=''}
+}
+
+function calculate(){
+  try{
+    const val=fmt(eval(d.value));
+    d.value=String(val);
+    expr.textContent='';
+    d.style.animation='resultPop 0.3s ease';
+    setTimeout(()=>d.style.animation='',300);
+    ops.forEach(b=>b.dataset.active='false');
+    lastOp=null;
+  }catch(e){
+    d.value='Erro';expr.textContent='';
+  }
+}
+
+function ripple(el,e){
+  const r=document.createElement('span');
+  r.className='ripple';
+  const rect=el.getBoundingClientRect();
+  r.style.left=e.clientX-rect.left+'px';
+  r.style.top=e.clientY-rect.top+'px';
+  r.style.width=r.style.height='100px';
+  el.appendChild(r);
+  setTimeout(()=>r.remove(),400);
+}
+
+document.querySelectorAll('button').forEach(b=>b.addEventListener('pointerdown',e=>ripple(b,e)));
+
+document.addEventListener('keydown',e=>{
+  if('0123456789.'.includes(e.key))addNum(e.key);
+  else if(['+','-','*','/'].includes(e.key)){addOp(e.key)}
+  else if(e.key==='Enter'||e.key==='=')calculate();
+  else if(e.key==='Escape')clearAll();
+  else if(e.key==='Backspace')backspace();
+  else if(e.key==='%')percent();
+});
+</script>
+</body>
+</html>
