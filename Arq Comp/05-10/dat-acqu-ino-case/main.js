@@ -28,8 +28,8 @@ const serial = async (
             user: 'user_insert',
             password: 'Markino/12345',
             database: 'api',
-            port: 3300
-        } ,MIDIInput
+            port: 3306
+        }
     ).promise();
 
     // trata uma linha no formato "digital;analogico", vinda do Arduino ou do simulador
@@ -45,7 +45,11 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-
+          poolBancoDados.execute(
+          'INSERT INTO medida (lm35_temperatura, chave) VALUES (?, ?)',
+          [lm35, tcrt5000]
+);
+           
             // TODO (Etapa 3): escreva aqui o INSERT na tabela "medida"
             // use poolBancoDados.execute(...) com "?" para os valores
             // lembre: o campo "momento" é preenchido pelo banco, não pelo main.js
@@ -59,9 +63,9 @@ const serial = async (
     if (HABILITAR_SENSORES_SIMULADOS) {
         console.log('*** MODO SIMULADO: os dados são falsos, o Arduino NÃO está sendo lido ***');
         setInterval(() => {
-            const digital = Math.round(Math.random());              // 0 ou 1
-            const analogico = (18 + Math.random() * 4).toFixed(2);  // 18.00 a 21.99
-            tratarLinha(`${digital};${analogico}`);
+            const tcrt5000 = Math.round(Math.random());              // 0 ou 1
+            const lm35 = (18 + Math.random() * 4).toFixed(2);  // 18.00 a 21.99
+            tratarLinha(`${tcrt5000};${lm35}`);
         }, 1000);
         return;
     }
@@ -104,7 +108,7 @@ const servidor = (
 
     // configurações de requisição e resposta
     app.use((request, response, next) => {
-        response.header('Access-Control-Allow-Origem', '*');
+        response.header('Access-Control-Allow-Origin', '*');
         response.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
         next();
     });
