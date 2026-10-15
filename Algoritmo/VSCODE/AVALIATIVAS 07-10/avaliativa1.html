@@ -11,7 +11,7 @@
     informe quantos depósitos ele fez no banco.
     <input type="text" id="ipt_deposito"><br>
 
-    informe o valor de cada depósito, pois ele sempre depositava exatamente o mesmo valor.
+    informe o valor de cada depósito.
     <input type="text" id="ipt_valor"><br>
 
     informe a cada quantos meses o bônus é aplicado.
@@ -24,21 +24,25 @@
 
 <script>
     function saldo(){
+        let saldoAcumulado = 0
         let qtdDeposito = Number(ipt_deposito.value)
         let valorDeposito = Number(ipt_valor.value)
         let mesesBonus = Number(ipt_meses.value)
-        let contador = 0
         let mes = 0
-
-        while(contador < qtdDeposito){
-            mes++
-            
-            valorDeposito += valorDeposito
-            div_exibir.innerHTML += `${mes}°Mês: ${valorDeposito}<br>`
-            contador++
-        }
         
-        div_exibir.innerHTML += `Total Guardado R$: ${valorDeposito}`
+        while(mes < qtdDeposito){
+            mes++
+            if (mes % mesesBonus != 0){
+                saldoAcumulado += valorDeposito
+                div_exibir.innerHTML += `${mes}°Mês: ${saldoAcumulado.toFixed(2)}<br>`
+                
+            } else if (mes % mesesBonus == 0){
+                saldoAcumulado += valorDeposito 
+                saldoAcumulado += saldoAcumulado * 0.01
+                div_exibir.innerHTML += `${mes}°Mês: ${saldoAcumulado.toFixed(2)}⭐<br>`
+            }
+        }
+        div_exibir.innerHTML += `Total Guardado R$: ${saldoAcumulado}`
 
     }
 </script>

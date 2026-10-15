@@ -34,32 +34,34 @@
         let maxSemana = Number(ipt_nmax.value)
         let semanal = 0
         let distanciaPercorrida = 0
+        let distanciaSemana = inicial
 
         if (inicial <= 0) {
             alert('Inicial tem que ser maior que zero')
-        } else if (porcentual > 1 && porcentual < 10) {
+        } else if (porcentual < 1 || porcentual > 10) {
             alert('Porcentual invalido')
         } else if (meta <= inicial) {
             alert('Meta tem que ser maior que a distancia inicial')
-        } else if (maxSemana < 1 && maxSemana > 24) {
+        } else if (maxSemana < 1 || maxSemana > 24) {
             alert('Semana tem que ser maior que 1 e maior que 24')
         } else {
-            while (semanal < maxSemana) {
+
+            while (semanal < maxSemana && distanciaPercorrida < meta) {
                 semanal++
                 if (semanal % 4 != 0) {
-                    distanciaPercorrida += inicial + (inicial * porcentual)
+                    distanciaSemana += distanciaSemana * (porcentual / 100)
+                    distanciaPercorrida += distanciaSemana
                 } else if (semanal % 4 == 0) {
-                    distanciaPercorrida += inicial - (inicial * 0.7)
+                    distanciaSemana = distanciaSemana * 0.3
+                    distanciaPercorrida += distanciaSemana
                 }
+                let porcentualPercorrido = (distanciaPercorrida / meta) * 100
+                div_exibir.innerHTML += `Semana ${semanal} - ${distanciaSemana.toFixed(2)}km(${porcentualPercorrido.toFixed(2)}% da meta)<br>`    
             }
-            let porcentual = distanciaPercorrida * meta / 100
-
-            div_exibir.innerHTML += `Semana ${semanal} - ${distanciaPercorrida.toFixed(2)}km(${porcentual.toFixed(2)}% da meta)<br>`
-
             if(distanciaPercorrida >= meta){
-                div_exibir.innerHTML = `Meta de ${meta} atingida da semeana ${semanal}! Total acumulado no plano: ${distanciaPercorrida.toFixed(2)}km.`
+
+                div_exibir.innerHTML += `Meta de ${meta}km atingida na semana ${semanal}! Total acumulado no plano: ${distanciaPercorrida.toFixed(2)}km.`
             }
         }
     }
-
 </script>
