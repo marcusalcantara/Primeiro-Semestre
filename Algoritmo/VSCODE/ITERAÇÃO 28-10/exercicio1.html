@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <span>Filmes favoritos</span><br>
+    <input type="text" id="ipt_filme">
+
+    <button onclick="verificar()">Verificar</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let lista = []
+        lista += ipt_filme.value
+        div_exibir.innerHTML += `${lista}<br>`
+    }
+</script>

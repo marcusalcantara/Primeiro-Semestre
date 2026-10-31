@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Quantas pessoas ira entrar no carro</span>
+    <input type="text" id="ipt_qtdPessoas">
+
+    <button onclick="verificar()">#Partiu Carona</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function verificar(){
+        let pessoas = Number(ipt_qtdPessoas.value)
+        for (let i = 1; i <= pessoas; i++){
+            if (i == 1) {
+                div_exibir.innerHTML = `Entrou o ${i}° passageiro (que é o(a) motorista) <br>`
+            } else if (I > 1 && i < 6){
+                div_exibir.innerHTML += `Entrou o ${i}° passageiro<br>`
+            } else{
+                div_exibir.innerHTML += `O ${i}° passageiro terá que esperar<br>`
+            }
+        }
+    }
+</script>

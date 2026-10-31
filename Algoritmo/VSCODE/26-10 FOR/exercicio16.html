@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16</title>
+</head>
+<body>
+    <span>De quantos em quanto dias você vai pra academia ?</span>
+    <input type="text" id="ipt_dia">
+
+    <button onclick="rotina()">Exibir Rotina Mensal</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function rotina(){
+        let dia = Number(ipt_dia.value)
+
+        for(let i = 1; i <= 30; i++){
+            
+            if(i % dia == 1){
+                div_exibir.innerHTML += `Dia ${i}. Musculação <br>`    
+            }else{
+                div_exibir.innerHTML += `Dia ${i}. Comer, dormir etc <br>`
+            }
+        } 
+    }
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+</head>
+<body>
+    <span>Quantas voltas na corrida ?</span>
+    <input type="text" id="ipt_corrida">
+
+    <button onclick="botao()">Iniciar corrida</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    function botao(){
+        let corrida = Number(ipt_corrida.value)
+
+        for(let i = 1; i <= corrida; i++){
+            div_exibir.innerHTML += `Carro dando ${i}° volta <br>`
+        }
+    }
+</script>

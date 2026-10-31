@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+
+<body>
+    <span>Digite um número de 1 a 10</span>
+    <input type="text" id="ipt_menor"><br>
+
+    <span>Digite um número de 30 a 100</span>
+    <input type="text" id="ipt_maior"><br>
+
+    <button onclick="verificar()">Exibir</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+
+<script>
+    function verificar() {
+        let menor = Number(ipt_menor.value)
+        let maior = Number(ipt_maior.value)
+
+        if (maior >= 30 && maior <= 100 && menor >= 1 && menor <= 10){
+            if (i % 2 == 0) {
+                for (let i = menor; i <= maior; i++) {
+                    div_exibir.innerHTML += `${i}<br>`
+                }
+            }
+        }
+    }
+</script>

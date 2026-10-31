@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha</title>
+</head>
+
+<body>
+    Quantidade de batalhas
+    <input type="text" id="ipt_batalha"><br>
+
+    Quantidade de marinheiros em cada batalha
+    <input type="text" id="ipt_marinheiro"><br>
+
+    Quantidade de carnes disponíveis
+    <input type="text" id="ipt_carne"><br>
+
+    <button onclick="verificar()">Batalha</button>
+    <div id="div_exibir"></div>
+
+</body>
+<script>
+
+    function verificar() {
+        let batalha = Number(ipt_batalha.value)
+        let marinheiro = Number(ipt_marinheiro.value)
+        let carne = Number(ipt_carne.value)
+        let energia = 100
+        let marinheiroDerrotado = 0
+
+        for (let i = 1; i <= batalha; i++) {
+                if (energia >= 10 || carne > 0){
+                    energia -= 10
+                }
+            for (let j = 1; j <= marinheiro; j++) {
+                if (energia > 0) {
+                    energia -= 5
+                    marinheiroDerrotado++
+                } else if (energia <= 0 && carne > 0) {
+                    energia += 100
+                    carne--
+                    energia -= 5
+                    marinheiroDerrotado++
+                }
+
+                if (energia > 0) {
+                    div_exibir.innerHTML = `Resultado: Luffy saiu vitorioso<br>
+                    Quantidade de carnes restantes: ${carne}<br>
+                    Quantidade de marinheiro derrotados: ${marinheiroDerrotado}<br>
+                    Energia restante ao final das batalhas:: ${energia}`
+                } else {
+                    div_exibir.innerHTML = `Resultado: Luffy saiu derrotado<br>
+                    Quantidade de carnes restantes: ${carne}<br>
+                    Quantidade de marinheiro derrotados: ${marinheiroDerrotado}<br>
+                    Energia restante ao final das batalhas:: ${energia}`
+                }
+            }
+        }
+    }
+</script>
+
+</html>

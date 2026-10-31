@@ -1,14 +1,16 @@
-{
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": false
-  },
-  "editor.suggestOnTriggerCharacters": false,
-  "editor.inlineSuggest.enabled": false,
-  "editor.tabCompletion": "off",
-  "editor.parameterHints.enabled": false,
-  "json.schemas": [
 
-  ]
+{
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.inlineSuggest.enabled": false,
+    "editor.tabCompletion": "off",
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.parameterHints.enabled": false,
+    "editor.suggest.preview": false,
+    "editor.wordBasedSuggestions": "off"
 }
