@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Vá registrando os nomes das linhas de ônibus que ele pegou durante a semana. <br>
+    <input type="text" id="ipt_busao"><br>
+    <button onclick="gravar()">Gravar busão</button><br>
+
+    Pesquisa <br>
+    <input type="text" id="ipt_pesquisa"><br>
+    <button onclick="pesquisa()">Pesquisar</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+<script>
+    let lista = []
+    function gravar() {
+        let onibus = ipt_busao.value
+        lista.push(onibus)
+        div_exibir.innerHTML = ""
+        for (let i = lista.length - 1; i >= 0; i--) {
+            div_exibir.innerHTML += `${lista[i]}<br>`
+        }
+    }
+
+    function pesquisa() {
+        let pesquisa = ipt_pesquisa.value
+        let quantidade = 0
+        let indice = []
+        for (let i = 0; i < lista.length; i++) {
+            if (pesquisa == lista[i]) {
+                indice.push(i)
+                quantidade++
+            }
+        }
+        
+        if (quantidade > 0) {
+            div_exibir.innerHTML = ` Você já pegou essa linha ${quantidade} vezes, nos índices:${indice}`
+        } else {
+            div_exibir.innerHTML = `Você nunca pegou essa linha`
+        }
+    }
+</script>

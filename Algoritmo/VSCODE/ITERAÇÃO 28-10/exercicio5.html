@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    nome de cada projeto que já criou na vida
+    <input type="text" id="ipt_projeto"><br>
+
+    <button onclick="registro()">Registrar Projetos</button>
+    <button onclick="projetos()">Mostrar Projetos</button>
+    <div id="div_exibir"></div>
+
+</body>
+
+</html>
+<script>
+    let lista = []
+    function registro() {
+        let projeto = ipt_projeto.value
+        lista.push(projeto)
+        if (lista.length >= 0 && lista.length < 5) {
+            div_exibir.innerHTML = `Você já fez ${lista.length} projetos. Por isso você é um profissional Junior<br>`
+        } else if (lista.length < 13) {
+            div_exibir.innerHTML = `Você já fez ${lista.length} projetos. Por isso você é um profissional Pleno<br>`
+        } else {
+            div_exibir.innerHTML = `Você já fez ${lista.length} projetos. Por isso você é um profissional Senior<br>`
+        }
+    }
+
+    function projetos(){
+        for (let i = lista.length - 1; i >= 0; i--) {
+            div_exibir.innerHTML += `${lista[i]}<br>`
+        }
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Cadastre nomes de usuario
+    <input type="text" id="ipt_nome"><br>
+
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="ordem()">Ordenar</button><br>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+
+    let lista = []
+    function cadastrar(){
+        let nome = ipt_nome.value
+        lista.push(nome)
+    }
+
+    function ordem(){
+        for(let i = lista.length - 1; i >= 0; i--){
+            div_exibir.innerHTML += `${lista[i]} <br>`
+        }
+    }
+</script>

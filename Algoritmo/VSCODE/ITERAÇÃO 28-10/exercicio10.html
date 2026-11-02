@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Digite um número qualquer
+    <input type="text" id="ipt_numero">
+
+    <button onclick="analisar()">Analisar Historico</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let lista = []
+    function analisar(){
+        let num = Number(ipt_numero.value)
+        lista.push(num)
+        let maiorValor = lista[0]
+        let menorValor = lista[0]
+        div_exibir.innerHTML = ""
+        for(let i = 0; i < lista.length; i++){
+            if(lista[i] >= maiorValor){
+                maiorValor = lista[i]
+            } else if(lista[i] <= menorValor){
+                menorValor = lista[i]
+            }
+            div_exibir.innerHTML += `${i + 1} Número: ${lista[i]}<br>`
+        }
+        div_exibir.innerHTML += `Maior: ${maiorValor} <br> Menor: ${menorValor}`
+    }
+</script>

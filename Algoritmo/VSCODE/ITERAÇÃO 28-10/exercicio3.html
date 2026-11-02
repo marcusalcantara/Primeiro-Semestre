@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Informe um numero
+    <input type="text" id="ipt_num"><br>
+
+    <button onclick="verificar()">Cadastrar</button><br>
+    <button onclick="indicePar()">Ver indice pares</button><br>
+    <button onclick="valorPar()">Ver valores pares</button><br>
+    <button onclick="todos()">Todos</button><br>
+    <div id="div_exibir"></div>
+
+</body>
+
+</html>
+<script>
+    let lista = []
+
+    function verificar() {
+        div_exibir.innerHTML = ""
+        let num = Number(ipt_num.value)
+        lista.push(num)
+    }
+
+    function indicePar() {
+        div_exibir.innerHTML = ""
+        for (let i = 0; i < lista.length; i++) {
+            if (i % 2 == 0) {
+                div_exibir.innerHTML += `${lista[i]}<br>`
+            }
+        }
+    }
+
+    function valorPar() {
+        div_exibir.innerHTML = ""
+        for (let i = 0; i < lista.length; i++) {
+            if (lista[i] % 2 == 0) {
+                div_exibir.innerHTML += `${lista[i]}<br>`
+            }
+        }
+    }
+
+    function todos() {
+        div_exibir.innerHTML = ""
+        for(let i = 0; i < lista.length; i++){
+            div_exibir.innerHTML += `${lista[i]} <br>`
+        }
+    }
+
+
+</script>

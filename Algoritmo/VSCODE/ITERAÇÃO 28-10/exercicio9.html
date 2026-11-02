@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>Campanha do seu time</span><br>
+    <select id="select_campanha">
+        <option>Vitoria</option>
+        <option>Empate</option>
+        <option>Derrota</option>
+    </select><br>
+
+    <button onclick="registrar()">Registrar jogo</button>
+
+    <span>Indique qual jogo deseja saber o resultado</span>
+    <input type="text" id="ipt_jogo" oninput="resultado()"><br>
+
+    <div id="div_exibir"></div>
+
+
+</body>
+
+</html>
+<script>
+    let lista = []
+
+    function registrar() {
+        let vitoria = 0
+        let empate = 0
+        let derrota = 0
+        let pontosConquistados = 0
+        let campanha = select_campanha.value
+        lista.push(campanha)
+
+        for (let i = 0; i < lista.length; i++) {
+            if (lista[i] == 'Vitoria') {
+                vitoria++
+                pontosConquistados += 3
+            } else if (lista[i] == 'Empate') {
+                empate++
+                pontosConquistados += 1
+            } else {
+                derrota++
+            }
+        }
+        let pontosPossiveis = lista.length * 3
+        let aproveitamento = pontosConquistados / pontosPossiveis * 100
+        console.log(vitoria)
+        div_exibir.innerHTML = `O time teve: ${vitoria} vitórias, ${empate} empates, ${derrota} derrotas<br>
+        Pontuação total: ${pontosConquistados} pontos<br>
+        Aproveitamento: ${aproveitamento.toFixed(0)}%<br>`
+    }
+
+    function resultado(){
+        let jogo = ipt_jogo.value
+        if(lista[jogo - 1] != undefined){
+            if(lista[jogo - 1] == 'Vitoria'){
+                div_exibir.innerHTML += `No jogo ${jogo} o time ganhou` 
+            } else if(lista[jogo - 1] == 'Empate'){
+                div_exibir.innerHTML += `No jogo ${jogo} o time empatou` 
+            } else if(lista[jogo - 1] == 'Derrota'){
+                div_exibir.innerHTML += `No jogo ${jogo} o time perdeu`
+            }} else{
+            div_exibir.innerHTML = `Não foi cadastrado um ${jogo}º jogo`
+        }
+    }
+
+
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nome do produto
+    <input type="text" id="ipt_nome"><br>
+
+    Preço da compra
+    <input type="text" id="ipt_compra"><br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="relatorio()">Relatorio de estoque</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    let listaNome = []
+    let listaPreco = []
+    function cadastrar(){
+        let nome = ipt_nome.value
+        let compra = Number(ipt_compra.value)
+        listaNome.push(nome)
+        listaPreco.push(compra)
+    }
+
+    function relatorio(){
+        div_exibir.innerHTML = `Total de produtos: ${listaNome.length}<br>`
+        for(let i = 0; i < listaNome.length; i++){
+             div_exibir.innerHTML += `Produto ${i + 1}: ${listaNome[i]}<br>
+             Preço da compra: R$${listaPreco[i]} Vender por: R$${listaPreco[i] * 1.25}<br>`
+        }
+    }
+</script>
