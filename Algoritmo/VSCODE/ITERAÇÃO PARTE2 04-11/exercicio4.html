@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+</head>
+<body>
+    <select id="select_candidato">
+        <option>Marcus</option>
+        <option>Renan</option>
+        <option>Rafael</option>
+    </select>
+
+    <button onclick="votar()">Votar</button>
+    <button onclick="apurar()">Apurar votos</button>
+    <div id="div_exibir"></div>
+</body>
+</html>
+<script>
+    let listaVoto = []
+   
+    function votar(){
+        let candidato = select_candidato.value
+        listaVoto.push(candidato)   
+        div_exibir.innerHTML = `Voto registrado! Obrigado por participar.`
+    }
+    function apurar(){
+        let marcus = 0
+        let renan = 0
+        let rafael = 0
+        let maisVoto = listaVoto[0]
+        let vencedor = ''
+        for(let i = 0; i < listaVoto.length; i++){
+            if(listaVoto[i] === 'Marcus'){
+                marcus++
+            }
+            else if(listaVoto[i] === 'Renan'){
+                renan++
+            } 
+            else if(listaVoto[i] === 'Rafael'){
+                rafael++
+            }
+            
+            if(rafael > marcus && rafael > renan){
+                vencedor = 'Rafael'
+            }else if(marcus > rafael && marcus > renan){
+                vencedor = 'Marcus'
+            }else if(renan > rafael && renan > marcus){
+                vencedor = 'Renan'
+            }else{
+                vencedor = 'Houve Empate!'
+            }
+            if(listaVoto.length == 0){
+                div_exibir.innerHTML = `Nenhum voto registrado`
+            }
+        }
+        div_exibir.innerHTML = `Total votos: ${listaVoto.length}<br>
+        Marcus: ${marcus} votos <br>
+        Renan: ${renan} votos <br>
+        Rafael: ${rafael} votos <br>`
+        if(vencedor == 'Houve Empate!'){
+            div_exibir.innerHTML += `${vencedor}`
+        } else{
+            div_exibir.innerHTML += `O vencedor é ${vencedor}!`
+        }
+    }
+</script>

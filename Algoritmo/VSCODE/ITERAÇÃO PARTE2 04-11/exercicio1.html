@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Preço
+    <input type="text" id="ipt_preco"><br>
+
+    Produto
+    <input type="text" id="ipt_produto"><br>
+
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="carrinho()">Ver Carrinho</button>
+    <div id="div_exibir"></div>
+</body>
+
+</html>
+<script>
+    let listaPreco = []
+    let listaProduto = []
+    function adicionar() {
+        let preco = Number(ipt_preco.value)
+        let produto = (ipt_produto.value)
+        if (produto == '') {
+            alert('Produto Vazio')
+        } else if (preco <= 0) {
+            alert('Preço menor ou igual a 0')
+        } else if (listaProduto.includes(produto)) {
+            alert('Produto repetido')
+        } else {
+            listaPreco.push(preco)
+            listaProduto.push(produto)
+            for (let i = 0; i < listaProduto.length; i++) {
+                div_exibir.innerHTML = `${listaProduto[i]} adicionado ao carrinho !`
+            }
+        }
+    }
+    function carrinho() {
+        let precoCaro = listaPreco[0]
+        let nomeCaro = listaProduto[0]
+        let precoTotal = 0
+        div_exibir.innerHTML = ``
+        for(let i = listaProduto.length - 1; i >= 0; i--){
+            if(listaPreco[i] > precoCaro){
+                precoCaro = listaPreco[i]
+                nomeCaro = listaProduto[i]
+            }
+            precoTotal += listaPreco[i] 
+            div_exibir.innerHTML += `Produto ${i + 1} - ${listaProduto[i]} - R$${listaPreco[i]}<br>`
+        }
+        div_exibir.innerHTML += `Você tem ${listaProduto.length} produtos no carrinho<br>
+            Total da compra R$${precoTotal}<br>
+            Produto mais caro: ${nomeCaro} (R$${precoCaro})`
+    }
+
+</script>

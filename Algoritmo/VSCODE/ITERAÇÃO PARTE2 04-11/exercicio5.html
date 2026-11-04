@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Nome da música</span>
+    <input type="text" id="ipt_musica"><br>
+
+    <span>Duração música (em minutos)</span>
+    <input type="text" id="ipt_duracao"><br>
+
+    <button onclick="adicionar()">Adicionar a playlist</button>
+
+    <button onclick="ver()">Ver playlist</button>
+
+    <span>Pesquisar música</span>
+    <input type="text" id="ipt_pesquisa"><br>
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+    let listaNome = []
+    let listaDuracao = []
+    function adicionar(){
+        let nomeMusica = ipt_musica.value
+        let duracaoMusica = Number(ipt_duracao.value)
+        if(nomeMusica == ''){
+            alert('Nome não pode ser vazio !')
+        } else if(duracaoMusica <= 0){
+            alert('Toda música tem duração')
+        } else{
+            listaNome.push(nomeMusica)
+            listaDuracao.push(duracaoMusica)
+            for(let i = 0; i < listaNome.length; i++){
+                div_exibir.innerHTML = `${listaNome[i]} entrou na playlist !`
+            }
+        }
+    }
+
+    function ver(){
+        let duracaoTotal = 0
+        let duracaoLonga = listaDuracao[0]
+        let musicaLonga = listaNome[0]
+        let duracaoMusica = Number(ipt_duracao.value)
+        for(let i = 0; i < listaDuracao.length; i++){
+            duracaoTotal += listaDuracao[i]
+            if(listaDuracao[i] > duracaoLonga){
+                duracaoLonga = listaDuracao[i]
+                musicaLonga = listaNome[i]
+            }
+        }
+        div_exibir.innerHTML = `Total de músicas: ${listaNome.length}<br> 
+        Duração total: ${duracaoTotal}<br>
+        Música mais longa: ${musicaLonga} <br>`
+    }
+
+    function pesquisar(){
+        let pesquisa = ipt_pesquisa.value
+        let cont = 0
+        let indice = []
+        for(let i = 0; i < listaNome.length; i++){
+            if(pesquisa === listaNome[i]){
+                cont++
+                indice.push(i)
+                div_exibir.innerHTML = `A música aparece ${cont} na playlist, nos indices ${indice}`
+            }  else{
+                div_exibir.innerHTML = `Essa música não está na playlist`
+            }
+        }
+    }
+</script>
